@@ -82,7 +82,7 @@
         @include('modules.body')
 
         @section('content')
-            hola mundo
+          @yield('content')
         @endsection
 
     </div>
