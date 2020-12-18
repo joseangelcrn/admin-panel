@@ -87,8 +87,9 @@
 
     </div>
 
-    <script href="{{ asset('js/jquery-easing/jquery.easing.min.js') }}" ></script>
-    <script href="{{ asset('js/sb-admin-2.js') }}" ></script>
+    <script src="{{ asset('js/jquery/jquery.js') }}" ></script>
+    <script src="{{ asset('js/jquery-easing/jquery.easing.min.js') }}" ></script>
+    <script src="{{ asset('js/sb-admin-2.js') }}" ></script>
 
 </body>
 </html>
