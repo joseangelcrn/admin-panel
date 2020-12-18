@@ -6,9 +6,10 @@
 
         <!-- Main Content -->
         <div id="content">
-            @yield('content')
+            <div class="container-fluid" style="height:100vh;">
+                @yield('content')
+            </div>
         </div>
-        @include('modules.footer')
     </div>
 
 @endsection
