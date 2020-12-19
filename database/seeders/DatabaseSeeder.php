@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             //Creation of 'seeders'
             AdminSeeder::class,
             StaffSeeder::class,
+            TasksSeeders::class
         ]);
     }
 }
