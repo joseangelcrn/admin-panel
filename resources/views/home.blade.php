@@ -4,7 +4,10 @@
  <div class="container">
     <div class="row">
         <div class="col-12">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro soluta culpa ea omnis. Accusamus a error in omnis enim expedita corrupti officia quisquam. Eum distinctio ipsam atque nulla quis eveniet!</p>
+            <h1 class="text-center">{{$user->name}}</h1>
+            <hr>
+            <h2>Usuario desde: {{$user->created_at}}</h2>
+            <h2>Rol: xxx</h2>
         </div>
     </div>
  </div>
