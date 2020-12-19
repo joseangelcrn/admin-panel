@@ -4,10 +4,7 @@
  <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1 class="text-center">{{$user->name}}</h1>
-            <hr>
-            <h2>Usuario desde: {{$user->created_at}}</h2>
-            <h2>Rol: xxx</h2>
+          <h2>Pagina Admin - Index</h2>
         </div>
     </div>
  </div>
