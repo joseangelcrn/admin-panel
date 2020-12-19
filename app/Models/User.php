@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
-// implements MustVerifyEmail 
+// implements MustVerifyEmail
 {
     use  HasFactory, Notifiable, HasRoles;
 
@@ -42,4 +42,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Relations
+     */
+
+     public function tasks()
+     {
+        return $this->belongsToMany(Task::class,'tasks_x_users');
+    }
+
 }
