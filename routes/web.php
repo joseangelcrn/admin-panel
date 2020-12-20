@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,11 +25,24 @@ Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//Protected routes
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('/admin',AdminController::class)->name('*','admin');
-    Route::resource('/staff',StaffController::class)->name('*','staff');
+    //Admin Routes..
+    Route::resource('admin',AdminController::class)->name('*','');
+    Route::prefix('admin')->group(function () {
+    });
+    //Staff Routes...
+    Route::resource('/staff',StaffController::class)->name('*','');
+
+    Route::prefix('staff')->group(function () {
+    });
+
+    //Wathever user role can access here ..
+    Route::resource('/user',UserController::class)->name('*','user');
 });
-//Permission outputs
+
+
+//Permission outputs (messages)
 Route::get('/forbidden',function ()
 {
     return view('forbidden');
