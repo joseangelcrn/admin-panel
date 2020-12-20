@@ -1,6 +1,43 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-    <!-- Sidebar - Brand -->
+    <div class="sidebar-brand d-flex align-items-center justify-content-center">
+        <div class="sidebar-brand-icon rotate-n-15">
+            <i class="fas fa-laugh-wink"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">MENU</div>
+    </div>
+
+    {{-- HOME --}}
+    <li class="nav-item active">
+        @role('admin'))
+            <a class="nav-link" href="{{route('admin.index')}}">
+        @else
+            <a class="nav-link" href="{{route('staff.index')}}">
+        @endrole
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Inicio</span></a>
+    </li>
+
+    {{-- ADMIN MENU --}}
+    @role('admin')
+        @include('modules.menu-bar-left-admin')
+    @endrole
+
+    {{-- STAFF MENU --}}
+    @role('staff')
+        @include('modules.menu-bar-left-staff')
+    @endrole
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+    <!-- Sidebar Toggler (Sidebar) -->
+    <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    </div>
+
+
+
+    {{-- <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('home') }}">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
@@ -117,6 +154,6 @@
         <img class="sidebar-card-illustration mb-2" src="" alt="">
         <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!</p>
         <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-    </div>
+    </div> --}}
 
 </ul>
