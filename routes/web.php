@@ -26,3 +26,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::resource('/admin',AdminController::class)->name('*','admin');
 Route::resource('/staff',StaffController::class)->name('*','staff');
+
+//Permission outputs
+Route::get('/forbidden',function ()
+{
+    return view('forbidden');
+});
