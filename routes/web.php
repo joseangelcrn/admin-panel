@@ -28,13 +28,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Protected routes
 Route::group(['middleware' => ['auth']], function () {
     //Admin Routes..
-    Route::resource('admin',AdminController::class)->name('*','');
+
     Route::prefix('admin')->group(function () {
+        Route::get('/',[AdminController::class,'index'])->name('admin.index');
     });
     //Staff Routes...
-    Route::resource('/staff',StaffController::class)->name('*','');
-
     Route::prefix('staff')->group(function () {
+        Route::get('/',[StaffController::class,'index'])->name('staff.index');
     });
 
     //Wathever user role can access here ..
