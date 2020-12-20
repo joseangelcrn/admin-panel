@@ -2,19 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Task;
-use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class AdminController extends Controller
+class StaffController extends Controller
 {
-
-    public function __construct()
-    {
-        $this->middleware('permission:admin-index');
-    }
-
-
     /**
      * Display a listing of the resource.
      *
@@ -22,10 +14,12 @@ class AdminController extends Controller
      */
     public function index()
     {
+        //
+        $user = Auth::user();
+        $tasks =$user->tasks;
 
-        $staffUsers = User::getUsersByRoleName('staff');
-        $notAssignedTasks = Task::whereDoesntHave('users')->get();
-        return view('admin.index',compact('staffUsers','notAssignedTasks'));
+        return view('staff.index',compact('user','tasks'));
+
     }
 
     /**

@@ -52,4 +52,20 @@ class User extends Authenticatable
         return $this->belongsToMany(Task::class,'tasks_x_users');
     }
 
+
+    /**
+     * Functions
+     */
+
+    public static function getUsersByRoleName($name)
+    {
+
+        $usersByRole = User::with('roles')->whereHas('roles', function($q){
+            $q->where('name','staff');
+        })->get();
+
+        return $usersByRole;
+    }
+
+
 }
