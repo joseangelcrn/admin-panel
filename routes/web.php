@@ -24,9 +24,10 @@ Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('/admin',AdminController::class)->name('*','admin');
-Route::resource('/staff',StaffController::class)->name('*','staff');
-
+Route::group(['middleware' => ['auth']], function () {
+    Route::resource('/admin',AdminController::class)->name('*','admin');
+    Route::resource('/staff',StaffController::class)->name('*','staff');
+});
 //Permission outputs
 Route::get('/forbidden',function ()
 {
