@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -20,8 +22,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
-        return view('admin.index');
+
+        $staffUsers = User::getUsersByRoleName('staff');
+        $notAssignedTasks = Task::whereDoesntHave('users')->get();
+        return view('admin.index',compact('staffUsers','notAssignedTasks'));
     }
 
     /**
