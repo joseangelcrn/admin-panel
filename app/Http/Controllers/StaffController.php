@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Auth;
 
 class StaffController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:staff-index');
+    }
+
     /**
      * Display a listing of the resource.
      *
