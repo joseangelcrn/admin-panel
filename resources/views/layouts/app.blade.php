@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
 
     <!-- Fonts -->
     <link href="{{ asset('css/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
@@ -21,7 +21,7 @@
     <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
-
+    @yield('styles')
 </head>
 <body id="page-top">
     <div id="app">
@@ -88,8 +88,13 @@
     </div>
 
     <script src="{{ asset('js/jquery/jquery.js') }}" ></script>
-    <script src="{{ asset('js/jquery-easing/jquery.easing.min.js') }}" ></script>
+    <script src="{{ asset('js/bootstrap/bootstrap.bundle.js') }}" ></script>
+
+    <script src="{{ asset('js/jquery-easing/jquery.easing.js') }}" ></script>
     <script src="{{ asset('js/sb-admin-2.js') }}" ></script>
+
+
+    @yield('js')
 
 </body>
 </html>
