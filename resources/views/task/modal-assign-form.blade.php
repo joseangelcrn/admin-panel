@@ -8,20 +8,36 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="#" method="post">
+                <form action="{{route('admin.assign-task')}}" method="post">
+                    @csrf
+                    @method('post')
                     <div class="form-group">
-                        <select class="form-control" name="" id="" required>
+                        <label>Tarea</label>
+                        <select class="form-control" name="task_id" required>
                             <option value="">Selecciona una tarea</option>
                             @foreach(App\Models\Task::getNotAssigned() as $task)
-                                <option value="{{$task->id}}">{{$task->title}}</option>
+                                <option value="{{$task->id}}" title="{{$task->description}}">{{$task->title}}</option>
                             @endforeach
                         </select>
+                        <label>Usuario</label>
+                        <select class="form-control" name="user_id" required>
+                            <option value="">Selecciona una tarea</option>
+                              @if(isset($userId))
+                                @foreach(App\Models\User::all() as $currentUser)
+                                    <option value="{{$currentUser->id}}" {{$currentUser->id == $userId ?  "selected":""}}>{{$currentUser->name}}</option>
+                                @endforeach
+                                @else
+                                @foreach(App\Models\User::all() as $currentUser)
+                                    <option value="{{$currentUser->id}}">{{$currentUser->name}}</option>
+                                @endforeach
+                              @endif
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" type="button" data-dismiss="modal">Cancelar</button>
+                        <button class="btn btn-success" type="submit">Asignar</button>
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
             </div>
         </div>
     </div>

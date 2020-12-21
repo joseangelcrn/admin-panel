@@ -65,7 +65,7 @@
 
 
 
-             @include('task.modal-assign-form')
+             @include('task.modal-assign-form',['userId'=>$user->id])
 
         </div>
 
