@@ -10,7 +10,7 @@ class Task extends Model
     use HasFactory;
 
     protected $table = "tasks";
-    
+
 
     /**
      * relations
@@ -20,4 +20,16 @@ class Task extends Model
      {
          return $this->belongsToMany(User::class,'tasks_x_users');
      }
+
+     /**
+      * Functions
+      */
+
+      //static
+
+      public static function getNotAssigned()
+      {
+          $tasks = self::whereDoesntHave('users')->get();
+          return $tasks;
+      }
 }

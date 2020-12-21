@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,11 +26,23 @@ Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//Protected routes
 Route::group(['middleware' => ['auth']], function () {
-    Route::resource('/admin',AdminController::class)->name('*','admin');
-    Route::resource('/staff',StaffController::class)->name('*','staff');
+    //Admin Routes..
+
+    Route::prefix('admin')->group(function () {
+        Route::get('/',[AdminController::class,'index'])->name('admin.index');
+        Route::get('/show/user/{id}',[AdminController::class,'showUser'])->name('admin.show-user');
+    });
+    //Staff Routes...
+    Route::prefix('staff')->group(function () {
+        Route::get('/',[StaffController::class,'index'])->name('staff.index');
+    });
+
 });
-//Permission outputs
+
+
+//Permission outputs (messages)
 Route::get('/forbidden',function ()
 {
     return view('forbidden');
