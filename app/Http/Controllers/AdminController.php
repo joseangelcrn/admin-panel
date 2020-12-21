@@ -26,8 +26,8 @@ class AdminController extends Controller
         $notAssignedTasks = Task::getNotAssigned();
         return view('admin.index',compact('staffUsers','notAssignedTasks'));
     }
-
-    public function show($id)
+    
+    public function showUser($id)
     {
         $user = User::findOrFail($id);
         return view('admin.show',compact('user'));
