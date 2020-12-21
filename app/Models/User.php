@@ -58,11 +58,18 @@ class User extends Authenticatable
      * Functions
      */
 
+    //static
     public static function getUsersByRoleName($name)
     {
         $usersByRole = Role::findByName($name)->users;
         return $usersByRole;
     }
 
+    //object
 
+    //check if user is admin
+    public function isAdmin()
+    {
+        return $this->hasRole('admin');
+    }
 }
