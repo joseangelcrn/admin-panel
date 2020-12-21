@@ -22,11 +22,17 @@ class AdminController extends Controller
      */
     public function index()
     {
-
         $staffUsers = User::getUsersByRoleName('staff');
-        $notAssignedTasks = Task::whereDoesntHave('users')->get();
+        $notAssignedTasks = Task::getNotAssigned();
         return view('admin.index',compact('staffUsers','notAssignedTasks'));
     }
+
+    public function showUser($id)
+    {
+        $user = User::findOrFail($id);
+        return view('admin.show-user',compact('user'));
+    }
+
 
 
 }
