@@ -27,10 +27,10 @@ class AdminController extends Controller
         return view('admin.index',compact('staffUsers','notAssignedTasks'));
     }
 
-    public function showUser($id)
+    public function show($id)
     {
         $user = User::findOrFail($id);
-        return view('admin.show-user',compact('user'));
+        return view('admin.show',compact('user'));
     }
 
 
