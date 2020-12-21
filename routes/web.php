@@ -33,6 +33,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::prefix('admin')->group(function () {
         Route::get('/',[AdminController::class,'index'])->name('admin.index');
         Route::get('/show/user/{id}',[AdminController::class,'showUser'])->name('admin.show-user');
+        Route::post('/assign_task',[AdminController::class,'assignTask'])->name('admin.assign-task');
     });
     //Staff Routes...
     Route::prefix('staff')->group(function () {
