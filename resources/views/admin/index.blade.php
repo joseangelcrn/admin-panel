@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('styles')
 
-    {{-- <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet"> --}}
     <link href="{{ asset('js/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
 
 @endsection
@@ -44,7 +43,7 @@
                            <td>{{$user->email}}</td>
                            <td>{{$user->tasks->count()}}</td>
                            <td>
-                               <a href="#" class="btn btn-sm btn-primary" title="Ver usuario"><i class="fas fa-eye"></i></a>
+                               <a href="{{route('admin.show-user',$user->id)}}" class="btn btn-sm btn-primary" title="Ver usuario"><i class="fas fa-eye"></i></a>
                            </td>
                        </tr>
                    @endforeach
