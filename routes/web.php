@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +32,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::prefix('admin')->group(function () {
         Route::get('/',[AdminController::class,'index'])->name('admin.index');
+        Route::get('/show-user/{id}',[AdminController::class,'showUser'])->name('admin.show-user');
     });
     //Staff Routes...
     Route::prefix('staff')->group(function () {
