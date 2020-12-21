@@ -32,7 +32,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::prefix('admin')->group(function () {
         Route::get('/',[AdminController::class,'index'])->name('admin.index');
-        Route::get('/show/user/{id}',[AdminController::class,'show'])->name('admin.show-user');
+        Route::get('/show/user/{id}',[AdminController::class,'showUser'])->name('admin.show-user');
     });
     //Staff Routes...
     Route::prefix('staff')->group(function () {
