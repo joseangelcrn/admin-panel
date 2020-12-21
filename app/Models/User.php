@@ -72,4 +72,16 @@ class User extends Authenticatable
     {
         return $this->hasRole('admin');
     }
+
+    //Assign task to this user
+    public function assignTask($taskId)
+    {
+        $task = Task::findOrFail($taskId);
+
+        if (! $this->tasks->contains($task->id)) {
+            $this->tasks()->attach($this->id);
+            return true;
+        }
+        return false;
+    }
 }
