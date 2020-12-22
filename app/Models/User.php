@@ -76,12 +76,11 @@ class User extends Authenticatable
     //Assign task to this user
     public function assignTask($taskId)
     {
-        $task = Task::findOrFail($taskId);
+        $result = false;
+        if (! $this->tasks->contains($taskId)) {
+            $result = $this->tasks()->attach($taskId);
 
-        if (! $this->tasks->contains($task->id)) {
-            $this->tasks()->attach($this->id);
-            return true;
         }
-        return false;
+        return $result;
     }
 }
