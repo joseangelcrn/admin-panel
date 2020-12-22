@@ -37,9 +37,10 @@ class AdminController extends Controller
     public function assignTask(Request $request)
     {
         $user = User::findOrFail($request->user_id);
-        $user->assignTask($request->taskId);
+        $task = Task::findOrFail($request->task_id);
+        $user->assignTask($task->id);
 
-        return back();
+        return redirect()->back();
 
     }
 

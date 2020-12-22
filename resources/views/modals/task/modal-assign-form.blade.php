@@ -8,9 +8,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{route('admin.assign-task')}}" method="post">
+                <form action="{{route('admin.assign-task')}}" method="POST">
                     @csrf
-                    @method('post')
+                    @method('POST')
                     <div class="form-group">
                         <label>Tarea</label>
                         <select class="form-control" name="task_id" required>
