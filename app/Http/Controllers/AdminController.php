@@ -38,10 +38,13 @@ class AdminController extends Controller
     {
         $user = User::findOrFail($request->user_id);
         $task = Task::findOrFail($request->task_id);
-        $user->assignTask($task->id);
+        $wasAssigned = $user->assignTask($task->id);
 
-        return redirect()->back();
-
+        if ($wasAssigned) {
+            return redirect()->back()->with('success','Se le ha asignado correctamente la tarea al usuario');
+        } else {
+            return redirect()->back()->with('error','Ocurrio un error al asignar la tarea al usuario');
+        }
     }
 
 }

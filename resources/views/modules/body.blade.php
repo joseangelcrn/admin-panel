@@ -16,6 +16,8 @@
                     </div>
                  </div>
 
+                @include('partials.messages')
+
                 @yield('content')
             </div>
         </div>

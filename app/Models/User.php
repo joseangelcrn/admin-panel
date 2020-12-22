@@ -78,8 +78,8 @@ class User extends Authenticatable
     {
         $result = false;
         if (! $this->tasks->contains($taskId)) {
-            $result = $this->tasks()->attach($taskId);
-
+            $this->tasks()->attach($taskId);
+            $result = $this->tasks()->exists($taskId);
         }
         return $result;
     }
