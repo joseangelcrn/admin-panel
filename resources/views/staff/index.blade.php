@@ -1,19 +1,15 @@
 @extends('layouts.app')
+
+@section('title','Staff - Index')
+
 @section('styles')
-
     <link href="{{ asset('js/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
-
 @endsection
 
 
 @section('content')
- <div class="container">
-    <div class="row">
-        <div class="col-12 mb-5">
-          <h2>Pagina Staff - Index</h2>
-        </div>
-    </div>
- </div>
+
+ @section('header','Pagina Staff - Index')
 
  <div class="container card shadow p-5">
      <div class="row d-flex justify-content-center">
