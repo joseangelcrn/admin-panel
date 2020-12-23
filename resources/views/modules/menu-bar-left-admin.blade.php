@@ -21,8 +21,8 @@
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Submenu</h6>
-            <a class="collapse-item" href="buttons.html">Ver tarea</a>
-            <a class="collapse-item" href="buttons.html">Crear tarea</a>
+            <a class="collapse-item" href="{{route('task.index')}}">Ver tareas</a>
+            <a class="collapse-item" href="{{route('task.create')}}">Crear tarea</a>
         </div>
     </div>
 </li>
