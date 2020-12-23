@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +29,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Protected routes
 Route::group(['middleware' => ['auth']], function () {
     //Admin Routes..
-
     Route::prefix('admin')->group(function () {
         Route::get('/',[AdminController::class,'index'])->name('admin.index');
         Route::get('/show/user/{id}',[AdminController::class,'showUser'])->name('admin.show-user');
@@ -39,6 +39,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/',[StaffController::class,'index'])->name('staff.index');
     });
 
+    //Task CRUD
+    Route::resource('task', TaskController::class)->name('*','task');
 });
 
 
