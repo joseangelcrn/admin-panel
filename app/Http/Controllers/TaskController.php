@@ -43,6 +43,9 @@ class TaskController extends Controller
     {
         //
         $task = Task::create($request->all());
+        $userIds = $request->user_id;
+
+        $task->assignUser($userIds,true);
 
         if ($task != null) {
             return back()->with('success','Tarea creada correctamente');

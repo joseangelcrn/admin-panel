@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag;
 
 class Task extends Model
 {
@@ -34,5 +35,14 @@ class Task extends Model
       {
           $tasks = self::whereDoesntHave('users')->get();
           return $tasks;
+      }
+
+
+      public function assignUser($userIds,$dettachFirst = false)
+      {
+        if ($dettachFirst) {
+            $this->users()->detach();
+        }
+        $this->users()->syncWithOutDetaching($userIds);
       }
 }
