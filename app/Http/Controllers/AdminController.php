@@ -23,7 +23,7 @@ class AdminController extends Controller
     public function index()
     {
         $staffUsers = User::getUsersByRoleName('staff');
-        $notAssignedTasks = Task::getNotAssigned();
+        $notAssignedTasks = Task::getNotAssignedAndActive();
         return view('admin.index',compact('staffUsers','notAssignedTasks'));
     }
 
@@ -45,6 +45,19 @@ class AdminController extends Controller
         } else {
             return redirect()->back()->with('error','Ocurrio un error al asignar la tarea al usuario');
         }
+    }
+
+    public function restoreTask($id)
+    {
+        $task = Task::findOrFail($id);
+        $activated  = $task->activate();
+
+        if ($activated) {
+            return back()->with('success','La tarea se ha vuelto a activar correctamente.');
+        } else {
+            return back()->with('error','Error al volver ha activar la tarea.');
+        }
+
     }
 
 }
