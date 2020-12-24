@@ -100,5 +100,14 @@ class TaskController extends Controller
     public function destroy($id)
     {
         //
+        $task = Task::findOrFail($id);
+        $deactivated = $task->deactivate();
+
+        if ($deactivated) {
+            return back()->with('success','Tarjeta borrada correctamente');
+        }
+        else{
+            return back()->with('error','Error al borrar la tarjeta');
+        }
     }
 }

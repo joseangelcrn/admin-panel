@@ -13,7 +13,8 @@ class Task extends Model
     protected $table = "tasks";
     protected $fillable=[
         'title',
-        'description'
+        'description',
+        'active'
     ];
 
     /**
@@ -37,6 +38,12 @@ class Task extends Model
           return $tasks;
       }
 
+      public static function getNotAssignedAndActive()
+      {
+          $tasks = self::whereDoesntHave('users')->where('active',true)->get();
+          return $tasks;
+      }
+
 
       public function assignUser($userIds,$dettachFirst = false)
       {
@@ -44,5 +51,15 @@ class Task extends Model
             $this->users()->detach();
         }
         $this->users()->syncWithOutDetaching($userIds);
+      }
+
+      public function activate()
+      {
+        return $this->update(['active'=>true]);
+      }
+      
+      public function deactivate()
+      {
+        return $this->update(['active'=>false]);
       }
 }
