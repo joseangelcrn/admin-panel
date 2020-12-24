@@ -34,7 +34,7 @@
                     @if ($task->active)
                     <b class="text-success">Activa</b>
                     @else
-                    <b class="text-danger">Inactiva</b>
+                    <b class="text-danger">Desactivada</b>
                     @endif
                 </td>
                 <td >

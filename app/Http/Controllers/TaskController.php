@@ -110,4 +110,20 @@ class TaskController extends Controller
             return back()->with('error','Error al borrar la tarjeta');
         }
     }
+
+    /**
+     * CUSTOM
+     */
+
+    public function enabledList()
+    {
+        $tasks = Task::where('active',true)->get();
+        return view('task.list-enabled',compact('tasks'));
+    }
+
+    public function disabledList()
+    {
+        $tasks = Task::where('active',false)->get();
+        return view('task.list-disabled',compact('tasks'));
+    }
 }

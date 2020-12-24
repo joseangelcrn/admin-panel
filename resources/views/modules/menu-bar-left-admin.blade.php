@@ -21,7 +21,9 @@
     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Submenu</h6>
-            <a class="collapse-item" href="{{route('task.index')}}">Ver tareas</a>
+            <a class="collapse-item" href="{{route('task.index')}}">Todas las tareas</a>
+            <a class="collapse-item" href="{{route('task.list-enabled')}}">Tareas activas</a>
+            <a class="collapse-item" href="{{route('task.list-disabled')}}">Tareas desactivadas</a>
             <a class="collapse-item" href="{{route('task.create')}}">Crear tarea</a>
         </div>
     </div>

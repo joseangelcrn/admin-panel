@@ -40,8 +40,14 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/',[StaffController::class,'index'])->name('staff.index');
     });
 
-    //Task CRUD
-    Route::resource('task', TaskController::class)->name('*','task');
+    //Task Routes...
+    Route::prefix('task')->group(function () {
+        Route::get('/list-enabled',[TaskController::class,'enabledList'])->name('task.list-enabled');
+        Route::get('/list-disabled',[TaskController::class,'disabledList'])->name('task.list-disabled');
+    });
+    Route::resource('/task', TaskController::class)->name('*','task');
+
+
 });
 
 
