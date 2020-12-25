@@ -5,10 +5,26 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\Console\Input\Input;
 
 class TaskController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $this->middleware('permission:task-index',['only'=>'index']);
+        $this->middleware('permission:task-create',['only'=>'create']);
+        $this->middleware('permission:task-show',['only'=>'show']);
+        $this->middleware('permission:task-update',['only'=>'update']);
+        $this->middleware('permission:task-delete',['only'=>'destroy']);
+        $this->middleware('permission:task-assign',['only'=>'assignTask']);
+        $this->middleware('permission:task-enable',['only'=>'enabledList']);
+        $this->middleware('permission:task-disable',['only'=>'disableddList']);
+        $this->middleware('permission:task-restore',['only'=>'restoreTask']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -64,8 +80,15 @@ class TaskController extends Controller
     public function show($id)
     {
         //
-        $task = Task::findOrFail($id);
-        return view('task.show',compact('task'));
+        $user = Auth::user();
+        if ($user->hasRole('admin') or $task->users()->find($user->id) != null) {
+            $task = Task::findOrFail($id);
+            return view('task.show',compact('task'));
+        }
+       else{
+           return view('forbidden');
+       }
+
     }
 
     /**
@@ -140,5 +163,31 @@ class TaskController extends Controller
     {
         $tasks = Task::where('active',false)->get();
         return view('task.list-disabled',compact('tasks'));
+    }
+
+    public function assignTask(Request $request)
+    {
+        $user = User::findOrFail($request->user_id);
+        $task = Task::findOrFail($request->task_id);
+        $wasAssigned = $user->assignTask($task->id);
+
+        if ($wasAssigned) {
+            return redirect()->back()->with('success','Se le ha asignado correctamente la tarea al usuario');
+        } else {
+            return redirect()->back()->with('error','Ocurrio un error al asignar la tarea al usuario');
+        }
+    }
+
+    public function restoreTask($id)
+    {
+        $task = Task::findOrFail($id);
+        $activated  = $task->activate();
+
+        if ($activated) {
+            return back()->with('success','La tarea se ha vuelto a activar correctamente.');
+        } else {
+            return back()->with('error','Error al volver ha activar la tarea.');
+        }
+
     }
 }
