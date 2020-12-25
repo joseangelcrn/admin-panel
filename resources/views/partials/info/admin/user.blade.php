@@ -5,7 +5,7 @@
             <hr>
         </div>
         <div class="col-lg-4 col-md-4 my-1">
-            <div class="card border-left-primary shadow  py-2">
+            <div id="info" class ="card border-left-primary shadow  py-2">
                  <div class="card-body">
                      <div class="row no-gutters align-items-center">
                          <div class="col mr-2">
@@ -22,7 +22,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-4 my-1">
-            <div class="card border-left-success shadow  py-2">
+            <div id="info" class ="card border-left-success shadow  py-2">
                  <div class="card-body">
                      <div class="row no-gutters align-items-center">
                          <div class="col mr-2">
@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="col-lg-4 col-md-4 my-1">
-            <div class="card border-left-danger shadow  py-2">
+            <div id="info" class ="card border-left-danger shadow  py-2">
                  <div class="card-body">
                      <div class="row no-gutters align-items-center">
                          <div class="col mr-2">
@@ -56,7 +56,7 @@
             </div>
         </div>
         <div class="col-lg-6 col-md-6 my-1">
-            <div class="card border-left-primary shadow  py-2">
+            <div id="info" class ="card border-left-primary shadow  py-2">
                  <div class="card-body">
                      <div class="row no-gutters align-items-center">
                          <div class="col mr-2">
@@ -73,7 +73,7 @@
             </div>
         </div>
         <div class="col-lg-6 col-md-6 my-1">
-            <div class="card border-left-warning shadow  py-2">
+            <div id="info" class ="card border-left-warning shadow  py-2">
                  <div class="card-body">
                      <div class="row no-gutters align-items-center">
                          <div class="col mr-2">
