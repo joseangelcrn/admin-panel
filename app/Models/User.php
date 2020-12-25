@@ -68,6 +68,40 @@ class User extends Authenticatable
         return $usersByRole;
     }
 
+
+    public static function getUsersWithTasks()
+    {
+        $tasks = self::whereHas('tasks',function ($q){
+            $q->where('active',true);
+        })->get();
+
+
+        return $tasks;
+    }
+
+    public static function getUsersWithoutTasks()
+    {
+        $tasks = self::whereDoesntHave('tasks',function ($q){
+            $q->where('active',true);
+        })->get();
+
+        return $tasks;
+    }
+
+
+    public static function getGlobalInfo()
+    {
+        $info = array();
+
+        $info['user_total'] = self::all()->count();
+        $info['user_active'] = self::whereNotNull('email_verified_at')->get()->count();
+        $info['user_not_active'] = self::whereNull('email_verified_at')->get()->count();
+        $info['user_with_tasks'] = self::getUsersWithTasks()->count();
+        $info['user_without_tasks'] = self::getUsersWithoutTasks()->count();
+
+        return $info;
+    }
+
     //object
 
     //check if user is admin
