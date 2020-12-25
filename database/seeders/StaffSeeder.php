@@ -20,6 +20,9 @@ class StaffSeeder extends Seeder
         $staffUser = User::create([
             'name'=>'staff',
             'email'=>'staff@gmail.com',
+            'first_surname'=>'surname 1',
+            'second_surname'=>'surname 2',
+            'user_name'=>'staff username',
             'password'=>bcrypt('staffpassword')
         ]);
 
