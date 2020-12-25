@@ -57,7 +57,7 @@ class Task extends Model
       {
         return $this->update(['active'=>true]);
       }
-      
+
       public function deactivate()
       {
         return $this->update(['active'=>false]);
