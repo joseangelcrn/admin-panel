@@ -16,16 +16,7 @@ class StaffPermissions extends Seeder
     public function run()
     {
         //
-
-        $permissions = [
-            'staff-index'
-        ];
-
-        foreach ($permissions as $permission) {
-            Permission::create(['name'=>$permission]);
-        }
-
         $staffRole = Role::findByName('staff');
-        $staffRole->syncPermissions($permissions);
+        $staffRole->syncPermissions(PermissionSeeder::$permissions['staff']);
     }
 }

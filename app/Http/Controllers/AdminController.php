@@ -11,7 +11,8 @@ class AdminController extends Controller
 
     public function __construct()
     {
-        $this->middleware('permission:admin-index');
+        $this->middleware('permission:admin-index',['only'=>'index']);
+        $this->middleware('permission:admin-showUser',['only'=>'showUser']);
     }
 
 
@@ -34,30 +35,5 @@ class AdminController extends Controller
     }
 
 
-    public function assignTask(Request $request)
-    {
-        $user = User::findOrFail($request->user_id);
-        $task = Task::findOrFail($request->task_id);
-        $wasAssigned = $user->assignTask($task->id);
-
-        if ($wasAssigned) {
-            return redirect()->back()->with('success','Se le ha asignado correctamente la tarea al usuario');
-        } else {
-            return redirect()->back()->with('error','Ocurrio un error al asignar la tarea al usuario');
-        }
-    }
-
-    public function restoreTask($id)
-    {
-        $task = Task::findOrFail($id);
-        $activated  = $task->activate();
-
-        if ($activated) {
-            return back()->with('success','La tarea se ha vuelto a activar correctamente.');
-        } else {
-            return back()->with('error','Error al volver ha activar la tarea.');
-        }
-
-    }
 
 }
