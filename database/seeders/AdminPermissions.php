@@ -15,19 +15,14 @@ class AdminPermissions extends Seeder
      */
     public function run()
     {
-        //
 
-        $permissions = [
-            'admin-index',
-        ];
 
-        foreach ($permissions as $permission) {
-            Permission::create(['name'=>$permission]);
-        }
+        // foreach ($permissions as $permission) {
+        //     Permission::create(['name'=>$permission]);
+        // }
 
         $adminRole = Role::findByName('admin');
-
-        $adminRole->syncPermissions($permissions);
+        $adminRole->syncPermissions(PermissionSeeder::$permissions['admin']);
     }
 
 }

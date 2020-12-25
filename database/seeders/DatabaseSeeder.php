@@ -16,10 +16,11 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call([
 
-            //Creation of roles
+            //Creation of roles and permissions
             RoleSeeder::class,
+            PermissionSeeder::class,
 
-            //Creation Roles permissions
+            //Assign  Role permissions
             AdminPermissions::class,
             StaffPermissions::class,
 
