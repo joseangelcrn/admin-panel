@@ -10,12 +10,11 @@
 
 @section('content')
 
-    @section('header','Pagina Admin - Editar tarea')
+    @section('header','Editar tarea')
 
     <div class="container card shadow p-5">
         <div class="row">
           <div class="col-lg-12 col-md-12">
-            <h1>Actualizar tarea</h1>
             <form action="{{route('task.update',$task->id)}}" method="post">
                 @csrf
                 @method('put')

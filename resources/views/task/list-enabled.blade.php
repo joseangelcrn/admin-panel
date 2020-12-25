@@ -8,12 +8,11 @@
 
 @section('content')
 
-    @section('header','Pagina Admin - Listar  tareas activas')
+    @section('header','Listar  tareas activas')
 
     <div class="container card shadow p-5">
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                <h1 class="my-5">Todas las tareas</h1>
                 <div class="mx-0 mb-3">
                     <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modal-task-assign">Asignar nueva tarea</a>
                 </div>
