@@ -12,6 +12,7 @@ class PermissionSeeder extends Seeder
         'admin'=>[
             'admin-index',
             'admin-showUser',
+            'task-index',
             'task-create',
             'task-show',
             'task-update',
