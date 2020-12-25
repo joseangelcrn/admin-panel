@@ -28,13 +28,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Protected routes
 Route::group(['middleware' => ['auth']], function () {
+
     //Admin Routes..
     Route::prefix('admin')->group(function () {
         Route::get('/',[AdminController::class,'index'])->name('admin.index');
         Route::get('/show/user/{id}',[AdminController::class,'showUser'])->name('admin.show-user');
-        Route::post('/assign_task',[AdminController::class,'assignTask'])->name('admin.assign-task');
-        Route::post('/restore_task/{id}',[AdminController::class,'restoreTask'])->name('admin.restore-task');
     });
+
     //Staff Routes...
     Route::prefix('staff')->group(function () {
         Route::get('/',[StaffController::class,'index'])->name('staff.index');
@@ -44,6 +44,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::prefix('task')->group(function () {
         Route::get('/list-enabled',[TaskController::class,'enabledList'])->name('task.list-enabled');
         Route::get('/list-disabled',[TaskController::class,'disabledList'])->name('task.list-disabled');
+        Route::post('/assign',[TaskController::class,'assignTask'])->name('task.assign');
+        Route::post('/restore/{id}',[TaskController::class,'restoreTask'])->name('task.restore');
     });
     Route::resource('/task', TaskController::class)->name('*','task');
 
