@@ -19,12 +19,12 @@
                             @csrf
 
                             <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                <div class="col">
                                     <input
                                     type="text"
                                     class="form-control form-control-user @error('name') is-invalid @enderror"
                                     id="name"
-                                    placeholder="Username"
+                                    placeholder="Nombre"
                                     name="name"
                                     value="{{ old('name') }}"
                                     required
@@ -35,8 +35,42 @@
                                         </span>
                                     @enderror
                                 </div>
-
-                                <div class="col-sm-6">
+                                <div class="col">
+                                    <input
+                                    type="text"
+                                    class="form-control form-control-user @error('user_name') is-invalid @enderror"
+                                    id="user_name"
+                                    placeholder="Nombre de usuario"
+                                    name="user_name"
+                                    value="{{ old('user_name') }}"
+                                    required
+                                    autofocus>
+                                    @error('user_name')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            {{-- 2º row --}}
+                            <div class="form-group row">
+                                <div class="col">
+                                    <input
+                                    type="text"
+                                    class="form-control form-control-user @error('first_surname') is-invalid @enderror"
+                                    id="first_surname"
+                                    placeholder="Primer apellido"
+                                    name="first_surname"
+                                    value="{{ old('first_surname') }}"
+                                    required
+                                    autofocus>
+                                    @error('first_surname')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col">
                                     <input
                                     type="email"
                                     class="form-control form-control-user @error('email') is-invalid @enderror"
@@ -49,15 +83,31 @@
                                     >
 
                                     @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
-
                             </div>
+                            {{-- 3º row --}}
                             <div class="form-group row">
-                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                <div class="col">
+                                    <input
+                                    type="text"
+                                    class="form-control form-control-user @error('second_surname') is-invalid @enderror"
+                                    id="second_surname"
+                                    placeholder="Segundo apellido"
+                                    name="second_surname"
+                                    value="{{ old('second_surname') }}"
+                                    required
+                                    autofocus>
+                                    @error('second_surname')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col">
                                     <input
                                     type="password"
                                     class="form-control form-control-user @error('password') is-invalid @enderror"
@@ -72,7 +122,13 @@
                                         </span>
                                     @enderror
                                 </div>
-                                <div class="col-sm-6">
+                            </div>
+                            {{-- 4º row --}}
+                            <div class="form-group row">
+                                <div class="col">
+
+                                </div>
+                                <div class="col">
                                     <input
                                     type="password"
                                     class="form-control form-control-user"
@@ -81,6 +137,8 @@
                                     >
                                 </div>
                             </div>
+                            {{-- --------- --}}
+
                             <button type="submit" class="btn btn-primary btn-user btn-block">
                                 Register Account
                             </button>
