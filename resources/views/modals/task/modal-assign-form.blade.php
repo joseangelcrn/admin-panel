@@ -8,7 +8,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{route('admin.assign-task')}}" method="POST">
+                <form action="{{route('task.assign')}}" method="POST">
                     @csrf
                     @method('POST')
                     <div class="form-group">

@@ -23,7 +23,7 @@
             <h6 class="collapse-header">Submenu</h6>
             <a class="collapse-item" href="{{route('task.index')}}">Todas las tareas</a>
             <a class="collapse-item" href="{{route('task.list-enabled')}}">Tareas activas</a>
-            <a class="collapse-item" href="{{route('task.list-disabled')}}">Tareas desactivadas</a>
+            <a class="collapse-item" href="{{route('task.list-disabled')}}">Tareas no activas</a>
             <a class="collapse-item" href="{{route('task.create')}}">Crear tarea</a>
         </div>
     </div>

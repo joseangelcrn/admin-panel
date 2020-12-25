@@ -45,7 +45,7 @@
                         @if ($task->active)
                             action="{{route('task.destroy',$task->id)}}"
                         @else
-                            action="{{route('admin.restore-task',$task->id)}}"
+                            action="{{route('task.restore',$task->id)}}"
                         @endif
 
                         method="post" style="display:inline-block;">
