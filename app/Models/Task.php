@@ -44,6 +44,23 @@ class Task extends Model
           return $tasks;
       }
 
+      public static function getAssignedAndActive()
+      {
+          $tasks = self::whereHas('users')->where('active',true)->get();
+          return $tasks;
+      }
+      public static function getGlobalInfo()
+      {
+        $info = array();
+
+        $info['task_total'] = self::all()->count();
+        $info['task_assigned'] = self::getAssignedAndActive()->count();
+        $info['task_not_assigned'] = self::getNotAssignedAndActive()->count();
+        $info['task_enabled'] = self::where('active',true)->get()->count();
+        $info['task_disabled'] = self::where('active',false)->get()->count();
+
+        return $info;
+      }
 
       public function assignUser($userIds,$dettachFirst = false)
       {

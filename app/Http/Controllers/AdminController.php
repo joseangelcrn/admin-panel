@@ -25,7 +25,10 @@ class AdminController extends Controller
     {
         $staffUsers = User::getUsersByRoleName('staff');
         $notAssignedTasks = Task::getNotAssignedAndActive();
-        return view('admin.index',compact('staffUsers','notAssignedTasks'));
+        $taskInfo = Task::getGlobalInfo();
+        $userInfo = User::getGlobalInfo();
+
+        return view('admin.index',compact('staffUsers','notAssignedTasks','taskInfo','userInfo'));
     }
 
     public function showUser($id)

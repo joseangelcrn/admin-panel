@@ -13,6 +13,18 @@
 
  <div class="container card shadow p-5">
     <div class="row">
+        <div class="col-lg-12 col-mf-12">
+            <div class="col-lg-12 col-md-12">
+                <h1 class="text-center">Datos generales</h1>
+            </div>
+        </div>
+    </div>
+    @include('partials.info.admin.user',['info'=>$userInfo])
+    {{-- ----- --}}
+    @include('partials.info.admin.task',['info'=>$taskInfo])
+
+    <hr>
+    <div class="row">
         <div class="col-lg-12 col-md-12">
            <h1>Usuarios Staff</h1>
             @include('partials.datatable.admin.user',['users'=>$staffUsers])
