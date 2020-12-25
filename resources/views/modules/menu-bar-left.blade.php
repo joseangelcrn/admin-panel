@@ -9,7 +9,7 @@
 
     {{-- HOME --}}
     <li class="nav-item active">
-        @role('admin'))
+        @role('admin')
             <a class="nav-link" href="{{route('admin.index')}}">
         @else
             <a class="nav-link" href="{{route('staff.index')}}">

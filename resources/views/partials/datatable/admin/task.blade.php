@@ -1,9 +1,10 @@
 <table class="table table-bordered" id="dataTable-tasks" width="100%" cellspacing="0">
     <colgroup>
-        <col span="1" style="width: 30%;">
-        <col span="1" style="width: 30%;">
-        <col span="1" style="width: 30%;">
+        <col span="1" style="width: 20%;">
+        <col span="1" style="width: 20%;">
+        <col span="1" style="width: 20%;">
         <col span="1" style="width: 10%;">
+        <col span="1" style="width: 15%;">
      </colgroup>
 
     <thead>
@@ -39,6 +40,7 @@
                 </td>
                 <td >
                         <a href="{{route('task.show',$task->id)}}" class="btn btn-sm btn-primary" title="Ver tarea"><i class="fas fa-eye"></i></a>
+                        <a href="{{route('task.edit',$task->id)}}" class="btn btn-sm btn-info" title="Ver tarea"><i class="fas fa-pencil-alt"></i></a>
                         <form
                         @if ($task->active)
                             action="{{route('task.destroy',$task->id)}}"
