@@ -21,7 +21,16 @@
                                     <form method="POST" action="{{ route('login') }}" class="user">
                                         @csrf
                                         <div class="form-group">
-                                            <input
+                                            <input id="login" type="text"
+                                                class="form-control form-control-user {{ $errors->has('user_name') || $errors->has('email') ? ' is-invalid' : '' }}"
+                                                name="login" value="{{ old('user_name') ?: old('email') }}" required autofocus placeholder="Nombre usuario o  email">
+
+                                            @if ($errors->has('user_name') || $errors->has('email'))
+                                                <span class="invalid-feedback">
+                                                    <strong>{{ $errors->first('user_name') ?: $errors->first('email') }}</strong>
+                                                </span>
+                                            @endif
+                                            {{-- <input
                                                 type="email"
                                                 class="form-control form-control-user @error('email') is-invalid @enderror"
                                                 id="email"
@@ -37,13 +46,13 @@
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
-                                                @enderror
+                                                @enderror --}}
                                         </div>
 
 
                                         <div class="form-group">
                                             <input type="password" class="form-control form-control-user  @error('password') is-invalid @enderror"
-                                                id="password" placeholder="Password"
+                                                id="password" placeholder="Contraseña"
                                                 name="password"
                                                 required autocomplete="current-password">
 
