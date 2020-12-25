@@ -23,6 +23,13 @@
 
     @yield('styles')
 </head>
+<style>
+    #info:hover{
+        transition: 1s;
+        transform: scale(1.1);
+        z-index:0;
+    }
+</style>
 <body id="page-top">
     <div id="app">
         {{-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
