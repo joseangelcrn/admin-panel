@@ -77,6 +77,9 @@ class TaskController extends Controller
     public function edit($id)
     {
         //
+        $task = Task::findOrFail($id);
+        $users = User::all();
+        return view('task.edit',compact('task','users'));
     }
 
     /**
@@ -89,6 +92,18 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $task = Task::findOrFail($id);
+        $userIds = $request->user_id;
+
+        $updated = $task->update($request->all());
+        $task->assignUser($userIds,true);
+
+       if ($updated) {
+            return back()->with('success','Tarea actualizada correctamente');
+        }
+        else{
+            return back()->with('error','Error al actualizar la tarea');
+        }
     }
 
     /**
