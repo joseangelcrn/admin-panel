@@ -19,7 +19,7 @@
                 <td>{{$task->title}}</td>
                 <td>{{Str::limit($task->description,10,'...')}}</td>
                 <td>
-                     <a href="#" class="btn btn-sm btn-primary" title="Ver tarea"><i class="fas fa-eye"></i></a>
+                     <a href="{{route('task.show',$task->id)}}" class="btn btn-sm btn-primary" title="Ver tarea"><i class="fas fa-eye"></i></a>
                 </td>
             </tr>
         @endforeach
