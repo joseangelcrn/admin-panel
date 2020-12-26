@@ -23,6 +23,7 @@ class AdminPermissions extends Seeder
 
         $adminRole = Role::findByName('admin');
         $adminRole->syncPermissions(PermissionSeeder::$permissions['admin']);
+        $adminRole->syncPermissions(PermissionSeeder::$permissions['common']);
     }
 
 }
