@@ -67,4 +67,4 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('/forbidden',function ()
 {
     return view('forbidden');
-});
+})->name('forbidden');
