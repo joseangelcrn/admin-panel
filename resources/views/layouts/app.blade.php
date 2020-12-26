@@ -25,7 +25,7 @@
 </head>
 <style>
     #info:hover{
-        transition: 1s;
+        transition: 0.3s;
         transform: scale(1.1);
         z-index:0;
     }
