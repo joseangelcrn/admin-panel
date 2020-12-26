@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Admin - Listar tareas no activas')
+@section('title','Admin - Tareas  no activas')
 
 @section('styles')
     <link href="{{ asset('js/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
@@ -8,17 +8,13 @@
 
 @section('content')
 
-    @section('header','Listar tareas no activas')
+    @section('header','Tareas no activas')
 
     <div class="container card shadow p-5">
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                <div class="mx-0 mb-3">
-                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modal-task-assign">Asignar nueva tarea</a>
-                </div>
                 @include('partials.datatable.admin.task',['tasks'=>$tasks])
             </div>
-             @include('modals.task.modal-assign-form')
         </div>
     </div>
 

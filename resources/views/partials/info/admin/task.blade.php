@@ -62,36 +62,40 @@
      </div>
      <div class="col-lg-6 col-md-6 my-1">
         <div id="info" class ="card border-left-info  shadow  py-2">
-             <div class="card-body">
-                 <div class="row no-gutters align-items-center">
-                     <div class="col mr-2">
-                         <div class="text-xs font-weight-bold text-black text-info text-uppercase mb-1">
-                             Tareas asignadas
-                         </div>
-                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{$info['task_assigned']}}</div>
-                     </div>
-                     <div class="col-auto">
-                         <i class="fas fa-info-circle fa-2x"></i>
-                     </div>
-                 </div>
-             </div>
+            <a href="{{route('task.list-assigned')}}">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-black text-info text-uppercase mb-1">
+                                Tareas asignadas
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$info['task_assigned']}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-info-circle fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
         </div>
      </div>
      <div class="col-lg-6 col-md-6 my-1">
         <div id="info" class ="card border-left-warning shadow  py-2">
-             <div class="card-body">
-                 <div class="row no-gutters align-items-center">
-                     <div class="col mr-2">
-                         <div class="text-xs font-weight-bold  text-uppercase mb-1" style="color: #ccaf0c">
-                             Tareas no asignadas
-                         </div>
-                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{$info['task_not_assigned']}}</div>
-                     </div>
-                     <div class="col-auto">
-                         <i class="fas fa-info-circle fa-2x"></i>
-                     </div>
-                 </div>
-             </div>
-        </div>
+            <a href="{{route('task.list-unassigned')}}">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold  text-uppercase mb-1" style="color: #ccaf0c">
+                                Tareas no asignadas
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$info['task_not_assigned']}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-info-circle fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            </div>
      </div>
 </div>

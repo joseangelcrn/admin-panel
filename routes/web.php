@@ -51,6 +51,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::prefix('task')->name('task.')->group(function () {
         Route::get('/list-enabled',[TaskController::class,'enabledList'])->name('list-enabled');
         Route::get('/list-disabled',[TaskController::class,'disabledList'])->name('list-disabled');
+        Route::get('/list-assigned',[TaskController::class,'assignedList'])->name('list-assigned');
+        Route::get('/list-unassigned',[TaskController::class,'unassignedList'])->name('list-unassigned');
+
         Route::post('/assign',[TaskController::class,'assignTask'])->name('assign');
         Route::post('/restore/{id}',[TaskController::class,'restoreTask'])->name('restore');
     });

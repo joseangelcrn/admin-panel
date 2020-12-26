@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','Admin - Todas las tareas')
+@section('title','Admin - Tareas con usuarios asignados')
 
 @section('styles')
     <link href="{{ asset('js/datatables/dataTables.bootstrap4.css') }}" rel="stylesheet">
@@ -8,7 +8,7 @@
 
 @section('content')
 
-    @section('header','Todas las tareas')
+    @section('header','Tareas con usuarios asignados')
 
     <div class="container card shadow p-5">
         <div class="row">
