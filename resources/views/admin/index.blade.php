@@ -16,21 +16,6 @@
     @include('partials.info.admin.user',['info'=>$userInfo])
     {{-- ----- --}}
     @include('partials.info.admin.task',['info'=>$taskInfo])
-{{--
-    <hr>
-    <div class="row">
-        <div class="col-lg-12 col-md-12">
-           <h1>Usuarios Staff</h1>
-            @include('partials.datatable.admin.user',['users'=>$staffUsers])
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-lg-12 col-md-12">
-           <h1>Tareas sin asginar</h1>
-           @include('partials.datatable.admin.task',['tasks'=>$notAssignedTasks])
-        </div>
-    </div> --}}
 </div>
 
 @endsection
