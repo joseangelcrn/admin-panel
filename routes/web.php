@@ -30,22 +30,29 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::group(['middleware' => ['auth']], function () {
 
     //Admin Routes..
-    Route::prefix('admin')->group(function () {
-        Route::get('/',[AdminController::class,'index'])->name('admin.index');
-        Route::get('/show/user/{id}',[AdminController::class,'showUser'])->name('admin.show-user');
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('/',[AdminController::class,'index'])->name('index');
+
+        Route::get('/show/user/all',[AdminController::class,'showAllUsers'])->name('show-all-users');
+        Route::get('/show/user/verified',[AdminController::class,'showVerifiedUsers'])->name('show-verified-users');
+        Route::get('/show/user/unverified',[AdminController::class,'showUnverifiedUsers'])->name('show-unverified-users');
+        Route::get('/show/user/with-tasks',[AdminController::class,'showUsersWithTasks'])->name('show-users-with-tasks');
+        Route::get('/show/user/without-tasks',[AdminController::class,'showUserWithoutTasks'])->name('show-users-without-tasks');
+        Route::get('/show/user/{id}',[AdminController::class,'showUser'])->name('show-user');
+
     });
 
     //Staff Routes...
-    Route::prefix('staff')->group(function () {
-        Route::get('/',[StaffController::class,'index'])->name('staff.index');
+    Route::prefix('staff')->name('staff.')->group(function () {
+        Route::get('/',[StaffController::class,'index'])->name('index');
     });
 
     //Task Routes...
-    Route::prefix('task')->group(function () {
-        Route::get('/list-enabled',[TaskController::class,'enabledList'])->name('task.list-enabled');
-        Route::get('/list-disabled',[TaskController::class,'disabledList'])->name('task.list-disabled');
-        Route::post('/assign',[TaskController::class,'assignTask'])->name('task.assign');
-        Route::post('/restore/{id}',[TaskController::class,'restoreTask'])->name('task.restore');
+    Route::prefix('task')->name('task.')->group(function () {
+        Route::get('/list-enabled',[TaskController::class,'enabledList'])->name('list-enabled');
+        Route::get('/list-disabled',[TaskController::class,'disabledList'])->name('list-disabled');
+        Route::post('/assign',[TaskController::class,'assignTask'])->name('assign');
+        Route::post('/restore/{id}',[TaskController::class,'restoreTask'])->name('restore');
     });
     Route::resource('/task', TaskController::class)->name('*','task');
 

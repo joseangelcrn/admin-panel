@@ -34,9 +34,41 @@ class AdminController extends Controller
     public function showUser($id)
     {
         $user = User::findOrFail($id);
-        return view('admin.show',compact('user'));
+        return view('admin.show-user',compact('user'));
     }
 
+    public function showAllUsers()
+    {
+        $users = User::all();
+        return view('admin.show-all-users',compact('users'));
+    }
 
+    public function showVerifiedUsers()
+    {
+        $users = User::getVerifiedUsers();
+
+        return view('admin.show-verified-users',compact('users'));
+    }
+
+    public function showUnverifiedUsers()
+    {
+        $users = User::getUnverifiedUsers();
+
+        return view('admin.show-unverified-users',compact('users'));
+    }
+
+    public function showUsersWithTasks()
+    {
+        $users = User::getUsersWithTasks();
+
+        return view('admin.show-users-with-tasks',compact('users'));
+    }
+
+    public function showUserWithoutTasks()
+    {
+        $users = User::getUsersWithoutTasks();
+
+        return view('admin.show-users-without-tasks',compact('users'));
+    }
 
 }

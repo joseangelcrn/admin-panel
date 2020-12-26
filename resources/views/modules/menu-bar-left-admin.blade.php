@@ -14,11 +14,11 @@
     <div id="admin_user_menu" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Submenu</h6>
-            <a class="collapse-item" href="{{route('task.index')}}">Todos</a>
-            <a class="collapse-item" href="{{route('task.list-enabled')}}">Activos</a>
-            <a class="collapse-item" href="{{route('task.list-disabled')}}">No activos</a>
-            <a class="collapse-item" href="{{route('task.create')}}">Con tareas</a>
-            <a class="collapse-item" href="{{route('task.create')}}">Sin tareas</a>
+            <a class="collapse-item" href="{{route('admin.show-all-users')}}">Todos</a>
+            <a class="collapse-item" href="{{route('admin.show-verified-users')}}">Activos</a>
+            <a class="collapse-item" href="{{route('admin.show-unverified-users')}}">No activos</a>
+            <a class="collapse-item" href="{{route('admin.show-users-with-tasks')}}">Con tareas</a>
+            <a class="collapse-item" href="{{route('admin.show-users-without-tasks')}}">Sin tareas</a>
         </div>
     </div>
 </li>

@@ -88,14 +88,25 @@ class User extends Authenticatable
         return $tasks;
     }
 
+    public static function getVerifiedUsers()
+    {
+        $users = self::whereNotNull('email_verified_at')->get();
+        return $users;
+    }
+
+    public static function getUnverifiedUsers()
+    {
+        $users = self::whereNull('email_verified_at')->get();
+        return $users;
+    }
 
     public static function getGlobalInfo()
     {
         $info = array();
 
         $info['user_total'] = self::all()->count();
-        $info['user_active'] = self::whereNotNull('email_verified_at')->get()->count();
-        $info['user_not_active'] = self::whereNull('email_verified_at')->get()->count();
+        $info['user_active'] = self::getVerifiedUsers()->count();
+        $info['user_not_active'] = self::getUnverifiedUsers()->count();
         $info['user_with_tasks'] = self::getUsersWithTasks()->count();
         $info['user_without_tasks'] = self::getUsersWithoutTasks()->count();
 
