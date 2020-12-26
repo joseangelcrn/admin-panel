@@ -18,5 +18,6 @@ class StaffPermissions extends Seeder
         //
         $staffRole = Role::findByName('staff');
         $staffRole->syncPermissions(PermissionSeeder::$permissions['staff']);
+        $staffRole->syncPermissions(PermissionSeeder::$permissions['common']);
     }
 }
