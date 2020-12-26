@@ -81,8 +81,9 @@ class TaskController extends Controller
     {
         //
         $user = Auth::user();
+        $task = Task::findOrFail($id);
+
         if ($user->hasRole('admin') or $task->users()->find($user->id) != null) {
-            $task = Task::findOrFail($id);
             return view('task.show',compact('task'));
         }
        else{
