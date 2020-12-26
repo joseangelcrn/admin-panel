@@ -165,6 +165,18 @@ class TaskController extends Controller
         return view('task.list-disabled',compact('tasks'));
     }
 
+    public function assignedList()
+    {
+        $tasks = Task::getAssignedAndActive();
+        return view('task.list-assigned',compact('tasks'));
+    }
+
+    public function unassignedList()
+    {
+        $tasks = Task::getNotAssignedAndActive();
+        return view('task.list-unassigned',compact('tasks'));
+    }
+
     public function assignTask(Request $request)
     {
         $user = User::findOrFail($request->user_id);
