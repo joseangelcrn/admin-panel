@@ -37,8 +37,8 @@
             <a class="collapse-item" href="{{route('task.index')}}">Todas</a>
             <a class="collapse-item" href="{{route('task.list-enabled')}}">Activas</a>
             <a class="collapse-item" href="{{route('task.list-disabled')}}">No activas</a>
-            <a class="collapse-item" href="{{route('task.list-disabled')}}">Asignadas</a>
-            <a class="collapse-item" href="{{route('task.list-disabled')}}">No asignadas</a>
+            <a class="collapse-item" href="{{route('task.list-assigned')}}">Asignadas</a>
+            <a class="collapse-item" href="{{route('task.list-unassigned')}}">No asignadas</a>
             <hr>
             <a class="collapse-item" href="{{route('task.create')}}">Crear tarea</a>
         </div>
