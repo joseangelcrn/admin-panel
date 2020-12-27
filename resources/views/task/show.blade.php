@@ -13,12 +13,12 @@
     <div class="container card shadow p-5">
         <div class="row">
           <div class="col-lg-12 col-md-12">
-            <h3 class="mt-3">Titulo: {{$task->title}}</h3>
+            <h1 class="mt-3">{{$task->title}}</h1>
             <p class="h5 mt-5">
                 {{$task->description}}
             </p>
             <hr>
-            <h1>Usuarios asignados a esta tarea</h1>
+            <h3>Usuarios asignados a esta tarea</h3>
             @include('partials.datatable.admin.user',['users'=>$task->users])
           </div>
         </div>
