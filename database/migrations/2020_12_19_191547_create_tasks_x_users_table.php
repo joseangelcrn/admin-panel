@@ -17,7 +17,8 @@ class CreateTasksXUsersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('task_id');
-            $table->timestamps(); 
+            $table->timestamp('finish_date')->nullable();
+            $table->timestamps();
         });
     }
 
