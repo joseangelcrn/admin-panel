@@ -4,7 +4,8 @@
         <hr>
     </div>
     <div class="col-lg-4 col-md-4 my-1">
-        <div id="info" class ="card border-left-primary shadow  py-2">
+        <div id="info" class ="card border-left-primary shadow py-2"
+        title="Todas las tareas del sistema (activas,no activas, asignadas y no asignadas, terminadas y no terminadas)">
             <a href="{{route('task.index')}}">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -23,7 +24,8 @@
         </div>
      </div>
      <div class="col-lg-4 col-md-4 my-1">
-        <div id="info" class ="card border-left-success shadow  py-2">
+        <div id="info" class ="card border-left-success shadow  py-2"
+        title="Tareas no cerradas">
             <a href="{{route('task.list-enabled')}}">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -42,7 +44,8 @@
             </div>
      </div>
      <div class="col-lg-4 col-md-4 my-1">
-        <div id="info" class ="card border-left-danger shadow  py-2">
+        <div id="info" class ="card border-left-danger shadow  py-2"
+        title="Tareas cerradas">
             <a href="{{route('task.list-disabled')}}">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -61,7 +64,8 @@
             </div>
      </div>
      <div class="col-lg-6 col-md-6 my-1">
-        <div id="info" class ="card border-left-info  shadow  py-2">
+        <div id="info" class ="card border-left-info  shadow  py-2"
+        title="Tareas asignadas al menos a un usuario">
             <a href="{{route('task.list-assigned')}}">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -80,7 +84,8 @@
         </div>
      </div>
      <div class="col-lg-6 col-md-6 my-1">
-        <div id="info" class ="card border-left-warning shadow  py-2">
+        <div id="info" class ="card border-left-warning shadow  py-2"
+        title="Tareas sin usuarios asignados">
             <a href="{{route('task.list-unassigned')}}">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -100,7 +105,9 @@
      </div>
      {{-- <div class="separator"></div> --}}
      <div class="col-lg-6 col-md-6 my-1">
-        <div id="info" class ="card border-left-success shadow  py-2">
+        <div id="info" class ="card border-left-success shadow  py-2"
+        title="Tareas las cuales los usuarios a los que se le ha asignado han terminado su parte, pendiente de ser verificadas
+        por administradores">
             <a href="{{route('task.list-unassigned')}}">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
@@ -120,7 +127,8 @@
      </div>
 
      <div class="col-lg-6 col-md-6 my-1">
-        <div id="info" class ="card border-left-danger shadow  py-2">
+        <div id="info" class ="card border-left-danger shadow  py-2"
+        title="Tareas en las que, al menos un usuario que la tenga asignada, no ha terminado su parte del trabajo">
             <a href="{{route('task.list-unassigned')}}">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">

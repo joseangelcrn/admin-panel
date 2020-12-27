@@ -107,8 +107,8 @@ class User extends Authenticatable
         $info = array();
 
         $info['user_total'] = self::all()->count();
-        $info['user_active'] = self::getVerifiedUsers()->count();
-        $info['user_not_active'] = self::getUnverifiedUsers()->count();
+        $info['user_verified'] = self::getVerifiedUsers()->count();
+        $info['user_not_verified'] = self::getUnverifiedUsers()->count();
         $info['user_with_tasks'] = self::getUsersWithTasks()->count();
         $info['user_without_tasks'] = self::getUsersWithoutTasks()->count();
 
