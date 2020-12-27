@@ -14,7 +14,6 @@ class PermissionSeeder extends Seeder
             'admin-showUser',
             'task-index',
             'task-create',
-            'task-show',
             'task-update',
             'task-delete',
             'task-assign',
@@ -22,7 +21,10 @@ class PermissionSeeder extends Seeder
             'task-disable',
         ],
         'staff'=>[
-            'staff-index'
+            'staff-index',
+        ],
+        'common'=>[
+            'task-show',
         ]
     ];
     /**

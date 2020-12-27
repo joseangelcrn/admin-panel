@@ -96,6 +96,46 @@
                     </div>
                 </div>
             </a>
-            </div>
+        </div>
+     </div>
+     {{-- <div class="separator"></div> --}}
+     <div class="col-lg-6 col-md-6 my-1">
+        <div id="info" class ="card border-left-success shadow  py-2">
+            <a href="{{route('task.list-unassigned')}}">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold  text-uppercase mb-1 text-success">
+                                Tareas pendientes de revisar (completadas)
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$info['task_completed']}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-info-circle fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+     </div>
+
+     <div class="col-lg-6 col-md-6 my-1">
+        <div id="info" class ="card border-left-danger shadow  py-2">
+            <a href="{{route('task.list-unassigned')}}">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold  text-uppercase  text-danger mb-1">
+                                Tareas no completas
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$info['task_incompleted']}}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-info-circle fa-2x"></i>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
      </div>
 </div>

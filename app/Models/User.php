@@ -53,8 +53,10 @@ class User extends Authenticatable
 
      public function tasks()
      {
-        return $this->belongsToMany(Task::class,'tasks_x_users');
-    }
+        return $this->belongsToMany(Task::class,'tasks_x_users')
+                ->withTimestamps()
+                ->withPivot('finish_date');
+     }
 
 
     /**

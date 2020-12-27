@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TaskController;
+use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -56,15 +57,20 @@ Route::group(['middleware' => ['auth']], function () {
 
         Route::post('/assign',[TaskController::class,'assignTask'])->name('assign');
         Route::post('/restore/{id}',[TaskController::class,'restoreTask'])->name('restore');
+        Route::post('/complete/{taskId}/{userId}',[TaskController::class,'complete'])->name('complete');
     });
     Route::resource('/task', TaskController::class)->name('*','task');
 
 
 });
 
+Route::get('/test', function () {
+    $incompleteTasks = Task::getIncompleteAndActive();
+    dd($incompleteTasks->pluck('id'));
+});
 
 //Permission outputs (messages)
 Route::get('/forbidden',function ()
 {
     return view('forbidden');
-});
+})->name('forbidden');
