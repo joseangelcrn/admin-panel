@@ -87,7 +87,7 @@ class TaskController extends Controller
             return view('task.show',compact('task'));
         }
        else{
-           return view('forbidden');
+           return redirect()->route('forbidden');
        }
 
     }
@@ -201,6 +201,18 @@ class TaskController extends Controller
         } else {
             return back()->with('error','Error al volver ha activar la tarea.');
         }
+    }
 
+    public function complete($taskId,$userId)
+    {
+        $task = Task::findOrFail($taskId);
+        $updated = $task->completeByUser($userId);
+
+        if ($updated) {
+            return back()->with('success','La tarea se ha completado correctamente');
+        }
+        else{
+            return back()->with('error','Ha ocurrido algun error al completar la tarea');
+        }
     }
 }
