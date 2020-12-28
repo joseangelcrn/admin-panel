@@ -15,8 +15,8 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Submenu</h6>
             <a class="collapse-item" href="{{route('admin.show-all-users')}}">Todos</a>
-            <a class="collapse-item" href="{{route('admin.show-verified-users')}}">Activos</a>
-            <a class="collapse-item" href="{{route('admin.show-unverified-users')}}">No activos</a>
+            <a class="collapse-item" href="{{route('admin.show-verified-users')}}">Verificados</a>
+            <a class="collapse-item" href="{{route('admin.show-unverified-users')}}">No verificados</a>
             <a class="collapse-item" href="{{route('admin.show-users-with-tasks')}}">Con tareas</a>
             <a class="collapse-item" href="{{route('admin.show-users-without-tasks')}}">Sin tareas</a>
         </div>
