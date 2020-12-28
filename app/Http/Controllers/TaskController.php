@@ -178,6 +178,21 @@ class TaskController extends Controller
         return view('task.list-unassigned',compact('tasks'));
     }
 
+
+    public function completedAndNotVerifiedList()
+    {
+        $tasks = Task::getCompletedAndActive();
+        return view('task.list-completed-unverified',compact('tasks'));
+    }
+
+
+    public function incompletedList()
+    {
+        $tasks = Task::getIncompleteAndActive();
+        return view('task.list-incompleted',compact('tasks'));
+    }
+
+
     public function assignTask(Request $request)
     {
         $user = User::findOrFail($request->user_id);
