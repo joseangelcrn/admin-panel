@@ -108,7 +108,7 @@
         <div id="info" class ="card border-left-success shadow  py-2"
         title="Tareas las cuales los usuarios a los que se le ha asignado han terminado su parte, pendiente de ser verificadas
         por administradores">
-            <a href="{{route('task.list-unassigned')}}">
+            <a href="{{route('task.list-completed-unverified')}}">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
@@ -129,7 +129,7 @@
      <div class="col-lg-6 col-md-6 my-1">
         <div id="info" class ="card border-left-danger shadow  py-2"
         title="Tareas en las que, al menos un usuario que la tenga asignada, no ha terminado su parte del trabajo">
-            <a href="{{route('task.list-unassigned')}}">
+            <a href="{{route('task.list-incompleted')}}">
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
