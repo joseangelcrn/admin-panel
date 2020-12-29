@@ -3,9 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TaskController;
-use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,13 +33,25 @@ Route::group(['middleware' => ['auth']], function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/',[AdminController::class,'index'])->name('index');
 
-        Route::get('/show/user/all',[AdminController::class,'showAllUsers'])->name('show-all-users');
-        Route::get('/show/user/verified',[AdminController::class,'showVerifiedUsers'])->name('show-verified-users');
-        Route::get('/show/user/unverified',[AdminController::class,'showUnverifiedUsers'])->name('show-unverified-users');
-        Route::get('/show/user/with-tasks',[AdminController::class,'showUsersWithTasks'])->name('show-users-with-tasks');
-        Route::get('/show/user/without-tasks',[AdminController::class,'showUserWithoutTasks'])->name('show-users-without-tasks');
-        Route::get('/show/user/{id}',[AdminController::class,'showUser'])->name('show-user');
+        //show
+        Route::prefix('show')->name('show-')->group(function () {
+            Route::get('user/all',[AdminController::class,'showAllUsers'])->name('all-users');
+            Route::get('user/verified',[AdminController::class,'showVerifiedUsers'])->name('verified-users');
+            Route::get('user/unverified',[AdminController::class,'showUnverifiedUsers'])->name('unverified-users');
+            Route::get('user/with-tasks',[AdminController::class,'showUsersWithTasks'])->name('users-with-tasks');
+            Route::get('user/without-tasks',[AdminController::class,'showUserWithoutTasks'])->name('users-without-tasks');
+            Route::get('user/{id}',[AdminController::class,'showUser'])->name('user');
+        });
 
+        //edit
+        Route::prefix('edit')->name('edit-')->group(function () {
+            Route::get('user/{id}',[AdminController::class,'editUser'])->name('user');
+        });
+
+        //update
+        Route::prefix('update')->name('update-')->group(function () {
+            Route::post('user/{id}',[AdminController::class,'updateUser'])->name('user');
+        });
     });
 
     //Staff Routes...
