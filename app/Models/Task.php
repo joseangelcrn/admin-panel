@@ -84,6 +84,17 @@ class Task extends Model
         return $completedTasks;
       }
 
+      public static function getNotAttachedTaskToUser($userId)
+      {
+        $tasks = self::whereDoesntHave('users')
+        ->orwhereHas('users',function($q) use($userId){
+            $q->where('user_id','!=',$userId);
+        })
+        ->get();
+
+        return $tasks;
+      }
+
       public static function getGlobalInfo()
       {
         $info = array();
@@ -110,7 +121,7 @@ class Task extends Model
         return  $this->users()->wherePivotNull('finish_date')->exists();
       }
 
-
+      //Function to complete some task by user
       public function completeByUser($userId)
       {
         $user = User::findOrFail($userId);
