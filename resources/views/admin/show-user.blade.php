@@ -29,9 +29,12 @@
                 <div class="mx-0 mb-3">
                     <a href="{{route('task.assign-form',$user->id)}}" class="btn btn-success">Asignar nueva tarea</a>
                 </div>
-                @include('partials.datatable.admin.task',['tasks'=>$user->tasks])
+                {{-- @include('partials.datatable.task',['tasks'=>$user->tasks]) --}}
+                @include('partials.datatable.task',[
+                    'tasks'=>$user->tasks,
+                    'options'=>Auth::user()->getOptionsForDataTable(),
+                ]);
             </div>
-             @include('modals.task.modal-assign-form',['userId'=>$user->id])
         </div>
     </div>
 
