@@ -26,7 +26,12 @@
     <div class="row">
         <div class="col-lg-12 col-md-12">
            <h1 class="my-5">Tareas asignadas</h1>
-           @include('partials.datatable.staff.task',['tasks'=>$tasks])
+           {{-- @include('partials.datatable.staff.task',['tasks'=>$tasks]) --}}
+           {{-- @dd(Auth::user()->getOptionsForDataTable(true)) --}}
+           @include('partials.datatable.task',[
+                'tasks'=>$tasks,
+                'options'=>Auth::user()->getOptionsForDataTable(true),
+            ]);
         </div>
     </div>
 </div>

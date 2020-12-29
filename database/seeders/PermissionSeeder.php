@@ -19,12 +19,15 @@ class PermissionSeeder extends Seeder
             'task-assign',
             'task-enable',
             'task-disable',
+            'task-restore',
         ],
         'staff'=>[
             'staff-index',
         ],
         'common'=>[
             'task-show',
+            'task-complete'
+
         ]
     ];
     /**

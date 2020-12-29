@@ -14,6 +14,13 @@ class User extends Authenticatable
 {
     use  HasFactory, Notifiable, HasRoles;
 
+    public const RULES = [
+        'name' => 'required',
+        'first_surname' => 'required',
+        'second_surname' => 'required',
+        'user_name' => 'required|unique:users',
+        'email' => 'required|email|unique:users',
+    ];
     /**
      * The attributes that are mass assignable.
      *
@@ -123,13 +130,26 @@ class User extends Authenticatable
         return $this->hasRole('admin');
     }
 
+    public function isStaff()
+    {
+        return $this->hasRole('staff');
+    }
     //Assign task to this user
     public function assignTask($taskId)
     {
         $result = false;
         if (! $this->tasks->contains($taskId)) {
-            $this->tasks()->attach($taskId);
-            $result = $this->tasks()->exists($taskId);
+            if (is_array($taskId)) {
+                $sync = $this->tasks()->syncWithoutDetaching($taskId);
+                if ($sync['attached'] == $taskId) {
+                    $result = true;
+                }
+            }
+            else{
+                $this->tasks()->attach($taskId);
+                $result = $this->tasks()->exists($taskId);
+            }
+
         }
         return $result;
     }
@@ -144,5 +164,24 @@ class User extends Authenticatable
     {
         $tasks = $this->tasks()->wherePivotNull('finish_date')->get();
         return $tasks;
+    }
+
+    //Datatable options
+
+    public function getOptionsForDataTable($canCompleteTasks = false)
+    {
+        $options = [];
+        if ($this->isAdmin()) {
+            $options = ['show','edit','delete_restore'];
+        }
+        if ($this->hasRole('staff')) {
+            $options = ['show'];
+        }
+
+        if ($canCompleteTasks) {
+            array_push($options,'complete');
+        }
+
+        return $options;
     }
 }
