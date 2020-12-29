@@ -154,4 +154,23 @@ class User extends Authenticatable
         $tasks = $this->tasks()->wherePivotNull('finish_date')->get();
         return $tasks;
     }
+
+    //Datatable options
+
+    public function getOptionsForDataTable($canCompleteTasks = false)
+    {
+        $options = [];
+        if ($this->isAdmin()) {
+            $options = ['show','edit','delete_restore'];
+        }
+        if ($this->hasRole('staff')) {
+            $options = ['show'];
+        }
+
+        if ($canCompleteTasks) {
+            array_push($options,'complete');
+        }
+
+        return $options;
+    }
 }
