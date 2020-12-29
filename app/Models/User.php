@@ -133,4 +133,16 @@ class User extends Authenticatable
         }
         return $result;
     }
+
+    public function getCompletedTasks()
+    {
+        $tasks = $this->tasks()->wherePivotNotNull('finish_date')->get();
+        return $tasks;
+    }
+
+    public function getInProgressTasks()
+    {
+        $tasks = $this->tasks()->wherePivotNull('finish_date')->get();
+        return $tasks;
+    }
 }
