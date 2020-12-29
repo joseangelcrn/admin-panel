@@ -25,7 +25,22 @@ class StaffController extends Controller
         $tasks =$user->tasks;
 
         return view('staff.index',compact('user','tasks'));
+    }
 
+    public function showInProgress()
+    {
+        $user = Auth::user();
+        $tasks = $user->getInProgressTasks();
+
+        return view('staff.show-in-progress-tasks',compact('tasks'));
+    }
+
+    public function completedTasks()
+    {
+        $user = Auth::user();
+        $tasks = $user->getCompletedTasks();
+
+        return view('staff.show-completed-tasks',compact('tasks'));
     }
 
 }

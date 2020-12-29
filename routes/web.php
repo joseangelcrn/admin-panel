@@ -5,6 +5,7 @@ use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TaskController;
 use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,6 +46,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     //Staff Routes...
     Route::prefix('staff')->name('staff.')->group(function () {
+        Route::get('/tasks-in-progress', [StaffController::class,'showInProgress'])->name('tasks-in-progress');
+        Route::get('/tasks-completed', [StaffController::class,'completedTasks'])->name('tasks-completed');
         Route::get('/',[StaffController::class,'index'])->name('index');
     });
 
@@ -67,9 +70,9 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::get('/test', function () {
-    $incompleteTasks = Task::getIncompleteAndActive();
-    dd($incompleteTasks->pluck('id'));
+
 });
+
 
 //Permission outputs (messages)
 Route::get('/forbidden',function ()
