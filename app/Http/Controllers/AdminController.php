@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
@@ -14,7 +16,6 @@ class AdminController extends Controller
         $this->middleware('permission:admin-index',['only'=>'index']);
         $this->middleware('permission:admin-showUser',['only'=>'showUser']);
     }
-
 
     /**
      * Display a listing of the resource.
@@ -71,4 +72,40 @@ class AdminController extends Controller
         return view('admin.show-users-without-tasks',compact('users'));
     }
 
+    public function editUser($id)
+    {
+        $user = User::findOrFail($id);
+        $roles = Role::all();
+
+        return view('admin.edit-user',compact('user','roles'));
+    }
+
+
+    public function updateUser($id,Request $request)
+    {
+        $user = User::findOrFail($id);
+
+        $rules = User::RULES;
+        $rules['email'].=",email,$user->id";
+        $rules['user_name'].=",user_name,$user->id";
+
+        $validate = Validator::make($request->all(),$rules);
+
+        if ($validate->fails()) {
+            $updated = false;
+        }
+        else{
+            $updated = $user->update($request->all());
+        }
+
+
+        if ($updated) {
+            return back()->with('success','Usuario actualizado !');
+        } else {
+            return back()->with('error','Error al actualizar el usuario!')
+            ->withInput()
+            ->withErrors($validate);
+        }
+
+    }
 }
