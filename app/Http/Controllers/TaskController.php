@@ -23,6 +23,7 @@ class TaskController extends Controller
         $this->middleware('permission:task-enable',['only'=>'enabledList']);
         $this->middleware('permission:task-disable',['only'=>'disableddList']);
         $this->middleware('permission:task-restore',['only'=>'restoreTask']);
+        $this->middleware('permission:task-complete',['only'=>'complete']);
     }
 
     /**
