@@ -128,8 +128,17 @@ class User extends Authenticatable
     {
         $result = false;
         if (! $this->tasks->contains($taskId)) {
-            $this->tasks()->attach($taskId);
-            $result = $this->tasks()->exists($taskId);
+            if (is_array($taskId)) {
+                $sync = $this->tasks()->syncWithoutDetaching($taskId);
+                if ($sync['attached'] == $taskId) {
+                    $result = true;
+                }
+            }
+            else{
+                $this->tasks()->attach($taskId);
+                $result = $this->tasks()->exists($taskId);
+            }
+
         }
         return $result;
     }
