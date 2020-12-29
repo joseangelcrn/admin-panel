@@ -121,7 +121,6 @@ class TaskController extends Controller
 
         $updated = $task->update($request->all());
         $task->assignUser($userIds,true);
-
        if ($updated) {
             return back()->with('success','Tarea actualizada correctamente');
         }
@@ -196,14 +195,22 @@ class TaskController extends Controller
     public function assignTask(Request $request)
     {
         $user = User::findOrFail($request->user_id);
-        $task = Task::findOrFail($request->task_id);
-        $wasAssigned = $user->assignTask($task->id);
+        $taskIds = $request->task_id;
+        $wasAssigned = $user->assignTask($taskIds);
 
         if ($wasAssigned) {
             return redirect()->back()->with('success','Se le ha asignado correctamente la tarea al usuario');
         } else {
             return redirect()->back()->with('error','Ocurrio un error al asignar la tarea al usuario');
         }
+    }
+
+    public function assignForm($userId)
+    {
+        $user = User::findOrFail($userId);
+        $tasks = Task::getNotAttachedTaskToUser($userId);
+
+        return view('task.assign-form',compact('user','tasks'));
     }
 
     public function restoreTask($id)
