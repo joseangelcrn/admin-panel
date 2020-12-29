@@ -27,7 +27,7 @@
             <div class="col-lg-12 col-md-12">
                 <h1 class="my-5">Tareas asignadas</h1>
                 <div class="mx-0 mb-3">
-                    <a href="#" class="btn btn-success" data-toggle="modal" data-target="#modal-task-assign">Asignar nueva tarea</a>
+                    <a href="{{route('task.assign-form',$user->id)}}" class="btn btn-success">Asignar nueva tarea</a>
                 </div>
                 @include('partials.datatable.admin.task',['tasks'=>$user->tasks])
             </div>
@@ -46,7 +46,6 @@
             // Call the dataTables jQuery plugin
             $(document).ready(function() {
                 $('#dataTable-staff-user').DataTable();
-                $('#dataTable-tasks').DataTable();
             });
     </script>
 
