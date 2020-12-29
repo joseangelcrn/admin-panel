@@ -14,6 +14,13 @@ class User extends Authenticatable
 {
     use  HasFactory, Notifiable, HasRoles;
 
+    public const RULES = [
+        'name' => 'required',
+        'first_surname' => 'required',
+        'second_surname' => 'required',
+        'user_name' => 'required|unique:users',
+        'email' => 'required|email|unique:users',
+    ];
     /**
      * The attributes that are mass assignable.
      *
@@ -123,6 +130,10 @@ class User extends Authenticatable
         return $this->hasRole('admin');
     }
 
+    public function isStaff()
+    {
+        return $this->hasRole('staff');
+    }
     //Assign task to this user
     public function assignTask($taskId)
     {
