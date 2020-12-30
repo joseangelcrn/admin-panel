@@ -118,8 +118,16 @@ class Task extends Model
         $task_not_assigned_pc = $task_not_assigned/$task_total * 100;
         $task_enabled_pc = $task_enabled/$task_total * 100;
         $task_disabled_pc = $task_disabled/$task_total * 100;
-        $task_completed_pc = number_format($task_completed/$task_assigned,2) * 100;
-        $task_incompleted_pc = number_format($task_incompleted/$task_assigned,2) * 100;
+
+        if ($task_assigned != 0) {
+            $task_completed_pc = number_format($task_completed/$task_assigned,2) * 100;
+            $task_incompleted_pc = number_format($task_incompleted/$task_assigned,2) * 100;
+        }
+        else {
+            $task_completed_pc = 0;
+            $task_incompleted_pc = 0;
+        }
+
 
         //inserting info
         $array['title'] = 'Total de tareas';
