@@ -68,7 +68,7 @@ class TaskController extends Controller
         }
         else{
             $task = Task::create($request->all());
-            sizeof($userIds)>0 ? $task->assignUser($userIds,true) : null;
+            $task->assignUser($userIds,true);
         }
 
         if ($task != null) {
@@ -136,7 +136,7 @@ class TaskController extends Controller
         }
         else{
             $updated = $task->update($request->all());
-            sizeof($userIds)>0 ? $task->assignUser($userIds,true) : null;
+            $task->assignUser($userIds,true);
         }
 
        if ($updated) {

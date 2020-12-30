@@ -21,12 +21,12 @@
 
                 {{-- Task Crud --}}
                 <div class="form-group">
-                    <input type="text" name="title" class="form-control" placeholder="Titulo de la tarea">
+                    <input type="text" name="title" class="form-control" placeholder="Titulo de la tarea" value="{{old('title')}}">
                     @include('partials.label-error',['key'=>'title'])
 
                 </div>
                 <div class="form-group">
-                    <textarea name="description" cols="30" rows="10" class="form-control" placeholder="Descripcion de la tarea" ></textarea>
+                    <textarea name="description" cols="30" rows="10" class="form-control" placeholder="Descripcion de la tarea">{{old('description')}}</textarea>
                     @include('partials.label-error',['key'=>'description'])
                 </div>
                 {{-- User assign --}}
