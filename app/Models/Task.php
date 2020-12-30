@@ -99,13 +99,85 @@ class Task extends Model
       {
         $info = array();
 
-        $info['task_total'] = self::all()->count();
-        $info['task_assigned'] = self::getAssignedAndActive()->count();
-        $info['task_not_assigned'] = self::getNotAssignedAndActive()->count();
-        $info['task_enabled'] = self::where('active',true)->get()->count();
-        $info['task_disabled'] = self::where('active',false)->get()->count();
-        $info['task_completed'] = self::getCompletedAndActive()->count();
-        $info['task_incompleted'] = self::getIncompleteAndActive()->count();
+        $task_total = self::all()->count();
+        $task_assigned = self::getAssignedAndActive()->count();
+        $task_not_assigned = self::getNotAssignedAndActive()->count();
+        $task_enabled = self::where('active',true)->get()->count();
+        $task_disabled = self::where('active',false)->get()->count();
+        $task_completed = self::getCompletedAndActive()->count();
+        $task_incompleted = self::getIncompleteAndActive()->count();
+
+
+        //n_pc = percentage
+        $task_assigned_pc = $task_assigned/$task_total * 100;
+        $task_not_assigned_pc = $task_not_assigned/$task_total * 100;
+        $task_enabled_pc = $task_enabled/$task_total * 100;
+        $task_disabled_pc = $task_disabled/$task_total * 100;
+        $task_completed_pc = number_format($task_completed/$task_assigned,2) * 100;
+        $task_incompleted_pc = number_format($task_incompleted/$task_assigned,2) * 100;
+
+        //inserting info
+        $array['title'] = 'Total de tareas';
+        $array['desc'] = 'Todas las tareas del sistema';
+        $array['n'] = $task_total;
+        $array['class'] = 'primary';
+        $array['route_name'] = 'task.index';
+        array_push($info,$array);
+
+
+        $array['title'] = 'Tareas activas';
+        $array['desc'] = 'Todas las tareas activas del sistema';
+        $array['n'] = $task_enabled;
+        $array['n_pc'] = $task_enabled_pc;
+        $array['class'] = 'success';
+        $array['route_name'] = 'task.list-enabled';
+        array_push($info,$array);
+
+
+        $array['title'] = 'Tareas inactivas';
+        $array['desc']= 'Tareas las tareas activas del sistema';
+        $array['n'] = $task_disabled;
+        $array['n_pc'] = $task_disabled_pc;
+        $array['class'] = 'danger';
+        $array['route_name'] = 'task.list-disabled';
+        array_push($info,$array);
+
+
+        $array['title'] = 'Tareas asignadas';
+        $array['desc'] = 'Todas las tareas que tienen al menos un usuario asignado';
+        $array['n'] = $task_assigned;
+        $array['n_pc'] = $task_assigned_pc;
+        $array['class'] = 'success';
+        $array['route_name'] = 'task.list-assigned';
+        array_push($info,$array);
+
+
+        $array['title'] = 'Tareas no asignadas';
+        $array['desc'] = 'Todas las tareas que tienen ningun usuario asignado';
+        $array['n'] = $task_not_assigned;
+        $array['n_pc'] = $task_not_assigned_pc;
+        $array['class'] = 'danger';
+        $array['route_name'] = 'task.list-unassigned';
+        array_push($info,$array);
+
+
+        $array['title'] = 'Tareas completas(no verificadas)(tareas asignadas)';
+        $array['desc'] = 'Tareas completas pendientes de ser verificadas';
+        $array['n'] = $task_completed;
+        $array['n_pc'] = $task_completed_pc;
+        $array['class'] = 'success';
+        $array['route_name'] = 'task.list-completed-unverified';
+        array_push($info,$array);
+
+
+        $array['title'] = 'Tareas incompletas (tareas asignadas)';
+        $array['desc'] = 'Tareas en las que aun todos sus participantes no han terminado su parte del trabajo';
+        $array['n'] = $task_incompleted;
+        $array['n_pc'] = $task_incompleted_pc;
+        $array['class'] = 'danger';
+        $array['route_name'] = 'task.list-incompleted';
+        array_push($info,$array);
+
 
         return $info;
       }

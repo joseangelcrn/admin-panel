@@ -13,9 +13,9 @@
 
  <div class="container card shadow p-5">
 
-    @include('partials.info.admin.user',['info'=>$userInfo])
+    @include('partials.info.main',['mainTitle'=>'Usuarios','info'=>$userInfo])
     {{-- ----- --}}
-    @include('partials.info.admin.task',['info'=>$taskInfo])
+    @include('partials.info.main',['mainTitle'=>'Tareas','info'=>$taskInfo])
 </div>
 
 @endsection
