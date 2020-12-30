@@ -113,13 +113,57 @@ class User extends Authenticatable
     {
         $info = array();
 
-        $info['user_total'] = self::all()->count();
-        $info['user_verified'] = self::getVerifiedUsers()->count();
-        $info['user_not_verified'] = self::getUnverifiedUsers()->count();
-        $info['user_with_tasks'] = self::getUsersWithTasks()->count();
-        $info['user_without_tasks'] = self::getUsersWithoutTasks()->count();
+        // $info['user_total'] = self::all()->count();
+        // $info['user_verified'] = self::getVerifiedUsers()->count();
+        // $info['user_not_verified'] = self::getUnverifiedUsers()->count();
+        // $info['user_with_tasks'] = self::getUsersWithTasks()->count();
+        // $info['user_without_tasks'] = self::getUsersWithoutTasks()->count();
 
-        return $info;
+        $user_total = self::all()->count();
+        $user_verified = self::getVerifiedUsers()->count();
+        $user_not_verified = self::getUnverifiedUsers()->count();
+        $user_with_tasks = self::getUsersWithTasks()->count();
+        $user_without_tasks = self::getUsersWithoutTasks()->count();
+
+        $array['title'] = 'Total de usuarios';
+        $array['desc'] = 'Todos los usuarios del sistema';
+        $array['n'] = $user_total;
+        $array['class'] = 'primary';
+        $array['route_name'] = 'task.index';
+        array_push($info,$array);
+
+        $array['title'] = 'Usuarios verificados';
+        $array['desc'] = 'Todos los usuarios que han verificado por email su cuenta';
+        $array['n'] = $user_verified;
+        $array['class'] = 'success';
+        $array['route_name'] = 'task.index';
+        array_push($info,$array);
+
+        $array['title'] = 'Usuarios sin verificar';
+        $array['desc'] = 'Todos los usuarios que no han verificado aun su cuenta por email';
+        $array['n'] = $user_not_verified;
+        $array['class'] = 'danger';
+        $array['route_name'] = 'task.index';
+        array_push($info,$array);
+
+
+        $array['title'] = 'Usuarios con tareas';
+        $array['desc'] = 'Todos los usuarios del sistema';
+        $array['n'] = $user_with_tasks;
+        $array['class'] = 'success';
+        $array['route_name'] = 'task.index';
+        array_push($info,$array);
+
+
+        $array['title'] = 'Usuarios sin tareas';
+        $array['desc'] = 'Todos los usuarios del sistema';
+        $array['n'] = $user_without_tasks;
+        $array['class'] = 'danger';
+        $array['route_name'] = 'task.index';
+        array_push($info,$array);
+
+
+        return $info; 
     }
 
     //object
