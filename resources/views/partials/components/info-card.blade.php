@@ -1,6 +1,6 @@
 <div id="info" class="card border-left-{{$class}} shadow py-2"
     title="{{$desc}}">
-    <a href="{{$route_name ?? '#'}}">
+    <a href="{{route($route_name) ?? '#'}}">
         <div class="card-body">
             <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
