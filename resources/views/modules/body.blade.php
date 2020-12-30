@@ -6,7 +6,7 @@
 
         <!-- Main Content -->
         <div id="content">
-            <div class="container-fluid" style="height:100vh;">
+            <div class="container-fluid">
 
                 <div class="container">
                     <div class="row">
