@@ -8,7 +8,7 @@
                         {{$title}}
                     </div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $n }}</div>
-                    @isset($n_pc)
+                    @if($n_pc != null)
                         @include('partials.components.progress-bar',[
                             'value'=>$n_pc,
                             'class'=>$class
@@ -16,8 +16,11 @@
                     @endisset
                 </div>
                 <div class="col-auto">
-                    {{-- <i class="fas fa-info-circle fa-2x"></i> --}}
-                    <i class="{{$icon}}"></i>
+                    @if ($icon!=null)
+                        <i class="{{$icon}}"></i>
+                    @else
+                        <i class="fas fa-info-circle fa-2x"></i>
+                    @endif
                 </div>
             </div>
         </div>
