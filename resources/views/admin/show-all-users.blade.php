@@ -7,7 +7,6 @@
 @endsection
 
 @section('content')
-
     @section('header','Pagina Admin - Todos los usuarios')
 
     <div class="container card shadow p-5">
@@ -31,7 +30,7 @@
     <script>
             // Call the dataTables jQuery plugin
             $(document).ready(function() {
-                $('#dataTable-staff-user').DataTable();
+                $('#dataTable-user').DataTable();
             });
     </script>
 

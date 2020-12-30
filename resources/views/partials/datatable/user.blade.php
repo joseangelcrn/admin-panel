@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table table-bordered" id="dataTable-tasks" width="100%" cellspacing="0">
+    <table class="table table-bordered" id="dataTable-user" width="100%" cellspacing="0">
         <colgroup>
             <col span="1" style="width: 12%;">
             <col span="1" style="width: 12%;">
@@ -22,6 +22,7 @@
                 <th>Email</th>
                 <th>Verificado</th>
                 <th>Fecha creación</th>
+                <th>Tareas</th>
                 @if (!empty($options))
                 <th>Opciones</th>
                 @endif
@@ -37,6 +38,7 @@
                 <th>Email</th>
                 <th>Verificado</th>
                 <th>Fecha creación</th>
+                <th>Tareas</th>
                 @if (!empty($options))
                 <th>Opciones</th>
                 @endif
@@ -58,6 +60,9 @@
                         @endif
                     </td>
                     <td>{{$user->created_at->format('Y-m-d')}}</td>
+                    <td>
+                        {{$user->tasks()->count()}}
+                    </td>
                     <td >
                             @if(in_array('show',$options))
                                 <a href="{{route('admin.show-user',$user->id)}}" class="btn btn-sm btn-primary" title="Ver usuario"><i class="fas fa-eye"></i></a>
