@@ -114,10 +114,10 @@ class Task extends Model
 
 
         //n_pc = percentage
-        $task_assigned_pc = $task_assigned/$task_total * 100;
-        $task_not_assigned_pc = $task_not_assigned/$task_total * 100;
-        $task_enabled_pc = $task_enabled/$task_total * 100;
-        $task_disabled_pc = $task_disabled/$task_total * 100;
+        $task_assigned_pc = number_format($task_assigned/($task_assigned+$task_not_assigned),2)  * 100;
+        $task_not_assigned_pc = number_format($task_not_assigned/($task_assigned+$task_not_assigned),2) * 100;
+        $task_enabled_pc = number_format($task_enabled/$task_total,2)  * 100;
+        $task_disabled_pc = number_format($task_disabled/$task_total,2)  * 100;
 
         if ($task_assigned != 0) {
             $task_completed_pc = number_format($task_completed/$task_assigned,2) * 100;
