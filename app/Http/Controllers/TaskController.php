@@ -6,6 +6,7 @@ use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use Symfony\Component\Console\Input\Input;
 
 class TaskController extends Controller
@@ -59,16 +60,24 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         //
-        $task = Task::create($request->all());
         $userIds = $request->user_id;
+        $validate = Validator::make($request->all(),Task::RULES);
 
-        $task->assignUser($userIds,true);
+        if ($validate->fails()) {
+            $task = null;
+        }
+        else{
+            $task = Task::create($request->all());
+            sizeof($userIds)>0 ? $task->assignUser($userIds,true) : null;
+        }
 
         if ($task != null) {
             return back()->with('success','Tarea creada correctamente');
         }
         else{
-            return back()->with('error','Error al crear la tarea');
+            return back()->with('error','Error al crear la tarea')
+            ->withErrors($validate->errors())
+            ->withInput();
         }
     }
 
@@ -120,8 +129,16 @@ class TaskController extends Controller
         $task = Task::findOrFail($id);
         $userIds = $request->user_id;
 
-        $updated = $task->update($request->all());
-        $task->assignUser($userIds,true);
+        $validate = Validator::make($request->all(),Task::RULES);
+
+        if ($validate->fails()) {
+            $task = null;
+        }
+        else{
+            $updated = $task->update($request->all());
+            sizeof($userIds)>0 ? $task->assignUser($userIds,true) : null;
+        }
+
        if ($updated) {
             return back()->with('success','Tarea actualizada correctamente');
         }
