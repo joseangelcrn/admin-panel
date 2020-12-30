@@ -11,6 +11,11 @@ class Task extends Model
 {
     use HasFactory;
 
+    public const RULES = [
+        'title' => 'required|min:2|max:255',
+        'description' => 'required',
+    ];
+
     protected $table = "tasks";
     protected $fillable=[
         'title',
