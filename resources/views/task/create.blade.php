@@ -21,10 +21,13 @@
 
                 {{-- Task Crud --}}
                 <div class="form-group">
-                    <input type="text" name="title" class="form-control" placeholder="Titulo de la tarea" required>
+                    <input type="text" name="title" class="form-control" placeholder="Titulo de la tarea">
+                    @include('partials.label-error',['key'=>'title'])
+
                 </div>
                 <div class="form-group">
-                    <textarea name="description" cols="30" rows="10" class="form-control" placeholder="Descripcion de la tarea" required></textarea>
+                    <textarea name="description" cols="30" rows="10" class="form-control" placeholder="Descripcion de la tarea" ></textarea>
+                    @include('partials.label-error',['key'=>'description'])
                 </div>
                 {{-- User assign --}}
                 <hr>

@@ -22,66 +22,45 @@
                 <div class="form-group mt-4">
                     <label>Nombre:</label>
                     <input type="text" class="form-control" name="name" placeholder="Nombre" value="{{old('name',$user->name)}}">
-
-                    @if($errors->has('name'))
-                        <strong class="text-danger">
-                            {{$errors->first('name')}}
-                        </strong>
-                    @endif
+                    @include('partials.label-error',['key'=>'name'])
 
                 </div>
 
                 <div class="form-group mt-4">
                     <label>Primer apellido:</label>
                     <input type="text" class="form-control" name="first_surname" placeholder="Primer apellido" value="{{old('first_surname',$user->first_surname)}}">
+                    @include('partials.label-error',['key'=>'first_surname'])
 
-                    @if($errors->has('first_surname'))
-                        <strong class="text-danger">
-                            {{$errors->first('first_surname')}}
-                        </strong>
-                    @endif
 
                 </div>
 
                 <div class="form-group mt-4">
                     <label>Segundo apellido:</label>
                     <input type="text" class="form-control" name="second_surname" placeholder="Segundo apellido" value="{{old('second_surname',$user->second_surname)}}">
+                    @include('partials.label-error',['key'=>'second_surname'])
 
-                    @if($errors->has('second_surname'))
-                        <strong class="text-danger">
-                            {{$errors->first('second_surname')}}
-                        </strong>
-                    @endif
 
                 </div>
 
                 <div class="form-group mt-4">
                     <label>Usuario:</label>
                     <input type="text" class="form-control" name="user_name" placeholder="Usuario" value="{{old('user_name',$user->user_name)}}">
+                    @include('partials.label-error',['key'=>'user_name'])
 
-                    @if($errors->has('user_name'))
-                        <strong class="text-danger">
-                            {{$errors->first('user_name')}}
-                        </strong>
-                    @endif
 
                 </div>
 
                 <div class="form-group mt-4">
                     <label>Email:</label>
                     <input type="text" class="form-control" name="email" placeholder="Email" value="{{old('email',$user->email)}}">
+                    @include('partials.label-error',['key'=>'email'])
 
-                    @if($errors->has('email'))
-                        <strong class="text-danger">
-                            {{$errors->first('email')}}
-                        </strong>
-                    @endif
 
                 </div>
 
                 <div class="form-group mt-4">
                     <label>Rol:</label>
-                    <select class="form-control" name="role_id" id=""  >
+                    <select class="form-control" name="role_id" id=""  required>
                         <option value="">-- Selecciona un rol --</option>
                         @foreach ($roles as $role)
                             <option value="{{$role->id}}"
