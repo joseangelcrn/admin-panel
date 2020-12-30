@@ -126,6 +126,23 @@ class Task extends Model
         $info['task_total']['route_name'] = 'task.index';
 
 
+        $info['task_enabled']['title'] = 'Tareas activas';
+        $info['task_enabled']['desc'] = 'Todas las tareas activas del sistema';
+        $info['task_enabled']['n'] = $task_enabled;
+        $info['task_enabled']['pc'] = $task_enabled_pc;
+        $info['task_enabled']['class'] = 'success';
+        $info['task_enabled']['route_name'] = 'task.list-enabled';
+
+
+        $info['task_disabled']['title'] = 'Tareas inactivas';
+        $info['task_disabled']['desc']= 'Tareas las tareas activas del sistema';
+        $info['task_disabled']['n'] = $task_disabled;
+        $info['task_disabled']['pc'] = $task_disabled_pc;
+        $info['task_disabled']['class'] = 'danger';
+        $info['task_disabled']['route_name'] = 'task.list-disabled';
+
+
+
         $info['task_assigned']['title'] = 'Tareas asignadas';
         $info['task_assigned']['desc'] = 'Todas las tareas que tienen al menos un usuario asignado';
         $info['task_assigned']['n'] = $task_assigned;
@@ -143,20 +160,6 @@ class Task extends Model
         $info['task_not_assigned']['route_name'] = 'task.list-unassigned';
 
 
-        $info['task_enabled']['title'] = 'Tareas activas';
-        $info['task_enabled']['desc'] = 'Todas las tareas activas del sistema';
-        $info['task_enabled']['n'] = $task_enabled;
-        $info['task_enabled']['pc'] = $task_enabled_pc;
-        $info['task_enabled']['class'] = 'success';
-        $info['task_enabled']['route_name'] = 'task.list-enabled';
-
-
-        $info['task_disabled']['title'] = 'Tareas inactivas';
-        $info['task_disabled']['desc']= 'Tareas las tareas activas del sistema';
-        $info['task_disabled']['n'] = $task_disabled;
-        $info['task_disabled']['pc'] = $task_disabled_pc;
-        $info['task_disabled']['class'] = 'danger';
-        $info['task_disabled']['route_name'] = 'task.list-disabled';
 
 
         $info['task_completed']['title'] = 'Tareas completas(no verificadas)(tareas asignadas)';
