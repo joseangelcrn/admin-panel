@@ -11,6 +11,15 @@
     @section('header','Ver tarea')
 
     <div class="container card shadow p-5">
+        @role('admin')
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <a href="{{route('task.edit',$task->id)}}" class="btn btn-primary">
+                        Editar tarea
+                    </a>
+                </div>
+            </div>
+        @endrole
         <div class="row">
           <div class="col-lg-12 col-md-12">
             <h1 class="mt-3">{{$task->title}}</h1>
