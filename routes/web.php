@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\SecurityController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Auth;
@@ -55,6 +57,13 @@ Route::group(['middleware' => ['auth']], function () {
         Route::prefix('update')->name('update-')->group(function () {
             Route::post('user/{id}',[AdminController::class,'updateUser'])->name('user');
         });
+
+          //Security stuff routes..
+          Route::prefix('security')->name('security.')->group(function () {
+            Route::get('/', [SecurityController::class,'index'])->name('index');
+          });
+
+
     });
 
     //Staff Routes...

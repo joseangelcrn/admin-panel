@@ -16,8 +16,8 @@
         @else
             <a class="nav-link" href="{{route('staff.index')}}">
         @endrole
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Inicio</span></a>
+        <i class="fas fa-home"></i>
+        <span>Inicio</span></a>
     </li>
 
     {{-- ADMIN MENU --}}

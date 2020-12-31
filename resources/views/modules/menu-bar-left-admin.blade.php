@@ -28,7 +28,7 @@
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#admin_task_menu"
         aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-fw fa-cog"></i>
+        <i class="fas fa-tasks"></i>
         <span>Tareas</span>
     </a>
     <div id="admin_task_menu" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -46,3 +46,20 @@
         </div>
     </div>
 </li>
+
+<li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#admin_conf_menu"
+        aria-expanded="true" aria-controls="collapseTwo">
+        <i class="fas fa-fw fa-cog"></i>
+        <span>Configuración</span>
+    </a>
+    <div id="admin_conf_menu" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">submenu</h6>
+            <a class="collapse-item" href="{{route('admin.security.index')}}">Ver roles y permisos</a>
+        </div>
+    </div>
+
+
+</li>
+
