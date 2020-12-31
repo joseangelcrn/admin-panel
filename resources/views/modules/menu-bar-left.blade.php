@@ -24,7 +24,7 @@
     @endrole
 
     {{-- STAFF MENU --}}
-    @role('staff')
+    @hasanyrole('admin|staff')
         @include('modules.menu-bar-left-staff')
     @endrole
 
