@@ -84,6 +84,8 @@ class AdminController extends Controller
     public function updateUser($id,Request $request)
     {
         $user = User::findOrFail($id);
+        $oldRole = $user->roles()->first();
+        $newRole = Role::findById($request->role_id);
 
         $rules = User::RULES;
         $rules['email'].=",email,$user->id";
@@ -96,6 +98,10 @@ class AdminController extends Controller
         }
         else{
             $updated = $user->update($request->all());
+            if (!$oldRole->is($newRole)) {
+                $user->removeRole($user->roles()->first());
+                $user->assignRole($newRole);
+            }
         }
 
 
