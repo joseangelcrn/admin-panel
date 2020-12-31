@@ -13,7 +13,10 @@
     <div class="container card shadow p-5">
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                @include('partials.datatable.user',['users'=>$users])
+                @include('partials.datatable.user',[
+                    'users'=>$users,
+                    'options'=>Auth::user()->getOptionsForDatatable()
+                ])
             </div>
         </div>
     </div>
