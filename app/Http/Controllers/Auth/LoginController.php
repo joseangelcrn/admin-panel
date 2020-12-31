@@ -27,9 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = RouteServiceProvider::HOME;
-    const ADMIN_HOME = '/admin';
-    const STAFF_HOME = '/staff';
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -44,17 +42,6 @@ class LoginController extends Controller
         $this->username = $this->findUsername();
     }
 
-    public function redirectTo(){
-        $user = Auth::user();
-
-        if ($user->hasRole('admin')) {
-            return self::ADMIN_HOME;
-        }
-        else if ($user->hasRole('staff')) {
-            return self::STAFF_HOME;
-        }
-
-    }
 
     /**
      * Get the login username to be used by the controller.
