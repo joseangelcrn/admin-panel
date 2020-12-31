@@ -71,6 +71,22 @@ class User extends Authenticatable
      */
 
     //static
+
+    public function redirect()
+    {
+        if ($this->hasRole('admin')) {
+            return redirect()->route('admin.index');
+        }
+        elseif ($this->hasRole('staff')) {
+            return redirect()->route('staff.index');
+        }
+        else {
+            return url('/');
+        }
+    }
+
+
+
     public static function getUsersByRoleName($name)
     {
         $usersByRole = Role::findByName($name)->users;
@@ -113,11 +129,6 @@ class User extends Authenticatable
     {
         $info = array();
 
-        // $info['user_total'] = self::all()->count();
-        // $info['user_verified'] = self::getVerifiedUsers()->count();
-        // $info['user_not_verified'] = self::getUnverifiedUsers()->count();
-        // $info['user_with_tasks'] = self::getUsersWithTasks()->count();
-        // $info['user_without_tasks'] = self::getUsersWithoutTasks()->count();
 
         $user_total = self::all()->count();
         $user_verified = self::getVerifiedUsers()->count();
@@ -163,7 +174,7 @@ class User extends Authenticatable
         array_push($info,$array);
 
 
-        return $info; 
+        return $info;
     }
 
     //object

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Auth;
@@ -27,6 +28,9 @@ Auth::routes(['verify'=>true]);
 
 //Protected routes
 Route::group(['middleware' => ['auth']], function () {
+
+    //HomeController to redirect after login.
+    Route::get('/home', [HomeController::class,'home'])->name('home');
 
     //Admin Routes..
     Route::prefix('admin')->name('admin.')->group(function () {
