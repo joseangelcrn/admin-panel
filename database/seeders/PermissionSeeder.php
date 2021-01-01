@@ -20,6 +20,9 @@ class PermissionSeeder extends Seeder
             'task-enable',
             'task-disable',
             'task-restore',
+            'security-index',
+            'security-show-all-users-and-roles',
+            'security-update-all-roles',
         ],
         'staff'=>[
             'staff-index',
