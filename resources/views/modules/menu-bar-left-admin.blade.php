@@ -57,6 +57,8 @@
         <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">submenu</h6>
             <a class="collapse-item" href="{{route('admin.security.index')}}">Ver roles y permisos</a>
+            <a class="collapse-item" href="{{route('admin.security.show.users-and-roles')}}">Cambiar rol de usuarios</a>
+
         </div>
     </div>
 
