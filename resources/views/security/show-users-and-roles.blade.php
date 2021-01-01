@@ -13,7 +13,7 @@
         <div class="row d-flex justify-content-center">
             <div class="col-lg-8 col-md-8">
                 <h2>Usuarios y sus roles</h2>
-                <form action="{{route('admin.security.update-all-roles')}}" method="post">
+                <form action="{{route('admin.security.update.users-and-roles')}}" method="post">
                     @csrf
                     @method('POST')
                     <div class="form-group">
