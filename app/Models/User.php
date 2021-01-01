@@ -177,6 +177,25 @@ class User extends Authenticatable
         return $info;
     }
 
+    public static function assignRolesToUsers($usersId,$rolesId)
+    {
+        if (in_array(null,$usersId) or in_array(null,$rolesId)) {
+            return false;
+        }
+        foreach ($usersId as $index=>$userId) {
+            $user = User::findOrFail($userId);
+            $currentRole = $user->roles()->first();
+            $newRole = Role::findById($rolesId[$index]);
+
+            if ($currentRole->id != $newRole->id) {
+                $user->removeRole($currentRole->name);
+                $user->assignRole($newRole->name);
+            }
+
+        }
+        return true;
+    }
+
     //object
 
     //check if user is admin
