@@ -61,6 +61,8 @@ Route::group(['middleware' => ['auth']], function () {
           //Security stuff routes..
           Route::prefix('security')->name('security.')->group(function () {
             Route::get('/', [SecurityController::class,'index'])->name('index');
+            Route::get('/users-and-roles', [SecurityController::class,'showTableUsersAndRoles'])->name('users-and-roles');
+            Route::post('/update-all-roles', [SecurityController::class,'updateAllRoles'])->name('update-all-roles');
           });
 
 
