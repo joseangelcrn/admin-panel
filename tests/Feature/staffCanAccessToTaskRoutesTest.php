@@ -4,13 +4,18 @@ namespace Tests\Feature;
 
 use App\Models\Task;
 use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
 class staffCanAccessToTaskRoutesTest extends TestCase
 {
+
+    use DatabaseTransactions,WithoutMiddleware;
+
     /**
      * A basic feature test example.
      *

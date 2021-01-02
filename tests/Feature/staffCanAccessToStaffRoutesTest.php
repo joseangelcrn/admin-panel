@@ -4,12 +4,13 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
 class staffCanAccessToStaffRoutesTest extends TestCase
 {
-    use DatabaseTransactions;
+    use DatabaseTransactions,WithoutMiddleware;
 
     //GETs methods
 

@@ -6,13 +6,15 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\ErrorHandler\Debug;
 use Tests\TestCase;
 
 class staffCanNotAccessToAdminRoutesTest extends TestCase
 {
-    use DatabaseTransactions;
+    use DatabaseTransactions,WithoutMiddleware;
+
 
     //GETs methods
 
