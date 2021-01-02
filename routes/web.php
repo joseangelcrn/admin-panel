@@ -6,6 +6,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\SecurityController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\TaskController;
+use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -77,19 +78,28 @@ Route::group(['middleware' => ['auth']], function () {
 
     //Task Routes...
     Route::prefix('task')->name('task.')->group(function () {
-        Route::get('/list-enabled',[TaskController::class,'enabledList'])->name('list-enabled');
-        Route::get('/list-disabled',[TaskController::class,'disabledList'])->name('list-disabled');
-        Route::get('/list-assigned',[TaskController::class,'assignedList'])->name('list-assigned');
-        Route::get('/list-unassigned',[TaskController::class,'unassignedList'])->name('list-unassigned');
-        Route::get('/list-completed-unverified',[TaskController::class,'completedAndNotVerifiedList'])->name('list-completed-unverified');
-        Route::get('/list-incompleted',[TaskController::class,'incompletedList'])->name('list-incompleted');
 
-        Route::get('/assign-form/{userId}',[TaskController::class,'assignForm'])->name('assign-form');
-        Route::post('/assign',[TaskController::class,'assignTask'])->name('assign');
-        Route::post('/restore/{id}',[TaskController::class,'restoreTask'])->name('restore');
-        Route::post('/complete/{taskId}/{userId}',[TaskController::class,'complete'])->name('complete');
+        Route::group(['middleware' => ['role:admin']], function () {
+            Route::get('/list-enabled',[TaskController::class,'enabledList'])->name('list-enabled');
+            Route::get('/list-disabled',[TaskController::class,'disabledList'])->name('list-disabled');
+            Route::get('/list-assigned',[TaskController::class,'assignedList'])->name('list-assigned');
+            Route::get('/list-unassigned',[TaskController::class,'unassignedList'])->name('list-unassigned');
+            Route::get('/list-completed-unverified',[TaskController::class,'completedAndNotVerifiedList'])->name('list-completed-unverified');
+            Route::get('/list-incompleted',[TaskController::class,'incompletedList'])->name('list-incompleted');
+
+            Route::get('/assign-form/{userId}',[TaskController::class,'assignForm'])->name('assign-form');
+            Route::post('/assign',[TaskController::class,'assignTask'])->name('assign');
+
+            Route::post('/restore/{id}',[TaskController::class,'restoreTask'])->name('restore');
+        });
+
+        Route::group(['middleware' => ['role:admin|staff']], function () {
+            Route::post('/complete/{taskId}/{userId}',[TaskController::class,'complete'])->name('complete');
+        });
+
     });
-    Route::resource('/task', TaskController::class)->middleware(['role:admin'])->name('*','task');
+
+    Route::resource('/task', TaskController::class)->name('*','task');
 
 
 });

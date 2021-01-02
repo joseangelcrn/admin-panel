@@ -15,17 +15,16 @@ class TaskController extends Controller
 
     public function __construct()
     {
-        $this->middleware('role:admin|staff',['only'=>'show','complete']);
-        $this->middleware('role:admin',[
-            'only'=>[
-                'index','create','store',
-                'show','edit','update',
-                'destroy','enabledList','disabledList',
-                'assignedList','unassignedList','completeAndNotVerifiedList',
-                'incompletedList','assignTask','assignForm',
-                'restoreTask'
-            ]
+        $this->middleware('role:admin|staff',[
+            'only'=>
+                'show','complete'
         ]);
+
+        $this->middleware('role:admin',[
+            'only'=>
+                'index','create','store','destroy','destroy','edit'
+        ]);
+
     }
 
     /**
