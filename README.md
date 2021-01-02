@@ -16,7 +16,7 @@ Cambiar por..
 
 ````
 //Protected routes
-Route::group(['middleware' => ['auth','verify']], function () {
+Route::group(['middleware' => ['auth','verified']], function () {
 ````
 
 Configurar el fichero .env para el uso del servicio de email (ejemplo usando mailtrap.io) :
