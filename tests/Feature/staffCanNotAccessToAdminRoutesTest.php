@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\ErrorHandler\Debug;
 use Tests\TestCase;
 
 class staffCanNotAccessToAdminRoutesTest extends TestCase
@@ -22,10 +23,9 @@ class staffCanNotAccessToAdminRoutesTest extends TestCase
         Auth::login($user);
 
         $response = $this->get(route('admin.index'));
-        $isForbidden = $response->isForbidden();
-        $this->assertTrue($isForbidden);
-
+        $response->assertRedirect(route('forbidden'));
     }
+
 
     public function testStaffCanNotAccessToAdminShowAllUsers()
     {
@@ -35,8 +35,7 @@ class staffCanNotAccessToAdminRoutesTest extends TestCase
         Auth::login($user);
 
         $response = $this->get(route('admin.show-all-users'));
-        $isForbidden = $response->isForbidden();
-        $this->assertTrue($isForbidden);
+        $response->assertRedirect(route('forbidden'));
 
     }
 
@@ -48,8 +47,7 @@ class staffCanNotAccessToAdminRoutesTest extends TestCase
         Auth::login($user);
 
         $response = $this->get(route('admin.show-verified-users'));
-        $isForbidden = $response->isForbidden();
-        $this->assertTrue($isForbidden);
+        $response->assertRedirect(route('forbidden'));
 
     }
 
@@ -61,9 +59,9 @@ class staffCanNotAccessToAdminRoutesTest extends TestCase
         Auth::login($user);
 
         $response = $this->get(route('admin.show-unverified-users'));
-        $isForbidden = $response->isForbidden();
-        $this->assertTrue($isForbidden);
+        $response->assertRedirect(route('forbidden'));
 
     }
+
 
 }

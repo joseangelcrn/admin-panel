@@ -22,8 +22,7 @@ class checkStaffAccessTest extends TestCase
         Auth::login($user);
 
         $response = $this->get(route('staff.index'));
-        $isForbidden = $response->isForbidden();
-        $this->assertFalse($isForbidden);
+        $response->assertStatus(200);
 
     }
 
@@ -36,8 +35,7 @@ class checkStaffAccessTest extends TestCase
         Auth::login($user);
 
         $response = $this->get(route('staff.tasks-in-progress'));
-        $isForbidden = $response->isForbidden();
-        $this->assertFalse($isForbidden);
+        $response->assertStatus(200);
 
     }
 
@@ -50,8 +48,7 @@ class checkStaffAccessTest extends TestCase
         Auth::login($user);
 
         $response = $this->get(route('staff.tasks-completed'));
-        $isForbidden = $response->isForbidden();
-        $this->assertFalse($isForbidden);
+        $response->assertStatus(200);
 
     }
 
