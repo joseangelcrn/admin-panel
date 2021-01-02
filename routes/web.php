@@ -59,17 +59,17 @@ Route::group(['middleware' => ['auth']], function () {
         });
 
           //Security stuff routes..
-          Route::prefix('security')->name('security.')->group(function () {
-            Route::get('/', [SecurityController::class,'index'])->name('index');
-            Route::get('/users-and-roles', [SecurityController::class,'showTableUsersAndRoles'])->name('show.users-and-roles');
-            Route::post('/update-all-roles', [SecurityController::class,'updateAllRoles'])->name('update.users-and-roles');
-          });
+        Route::prefix('security')->name('security.')->group(function () {
+          Route::get('/', [SecurityController::class,'index'])->name('index');
+          Route::get('/users-and-roles', [SecurityController::class,'showTableUsersAndRoles'])->name('show.users-and-roles');
+          Route::post('/update-all-roles', [SecurityController::class,'updateAllRoles'])->name('update.users-and-roles');
+        });
 
 
     });
 
     //Staff Routes...
-    Route::prefix('staff')->name('staff.')->middleware(['role:staff'])->group(function () {
+    Route::prefix('staff')->name('staff.')->middleware(['role:staff|admin'])->group(function () {
         Route::get('/tasks-in-progress', [StaffController::class,'showInProgress'])->name('tasks-in-progress');
         Route::get('/tasks-completed', [StaffController::class,'completedTasks'])->name('tasks-completed');
         Route::get('/',[StaffController::class,'index'])->name('index');
