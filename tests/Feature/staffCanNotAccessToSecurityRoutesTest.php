@@ -13,6 +13,8 @@ class staffCanNotAccessToSecurityRoutesTest extends TestCase
 {
     use DatabaseTransactions;
 
+    //GETs methods
+
     public function testStaffCanNotAccessToSecurityIndex()
     {
         $user = User::factory()->create();
@@ -32,6 +34,20 @@ class staffCanNotAccessToSecurityRoutesTest extends TestCase
         Auth::login($user);
 
         $response = $this->get(route('admin.security.show.users-and-roles'));
+        $response->assertRedirect(route('forbidden'));
+    }
+
+
+    //POSTs methods
+
+    public function testStaffCanNotAccessToSecurityUpdateAllRoles()
+    {
+        $user = User::factory()->create();
+        $user->assignRole('staff');
+
+        Auth::login($user);
+
+        $response = $this->post(route('admin.security.update.users-and-roles'));
         $response->assertRedirect(route('forbidden'));
     }
 }
