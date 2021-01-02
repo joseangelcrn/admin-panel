@@ -63,5 +63,29 @@ class staffCanNotAccessToAdminRoutesTest extends TestCase
 
     }
 
+    public function testStaffCanNotAccessToAdminShowUsersWithTasks()
+    {
+        $user = User::factory()->create();
+        $user->assignRole('staff');
+
+        Auth::login($user);
+
+        $response = $this->get(route('admin.show-users-with-tasks'));
+        $response->assertRedirect(route('forbidden'));
+
+    }
+
+
+    public function testStaffCanNotAccessToAdminShowUsersWithoutTasks()
+    {
+        $user = User::factory()->create();
+        $user->assignRole('staff');
+
+        Auth::login($user);
+
+        $response = $this->get(route('admin.show-users-without-tasks'));
+        $response->assertRedirect(route('forbidden'));
+
+    }
 
 }
