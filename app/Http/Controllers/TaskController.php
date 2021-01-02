@@ -15,16 +15,17 @@ class TaskController extends Controller
 
     public function __construct()
     {
-        $this->middleware('permission:task-index',['only'=>'index']);
-        $this->middleware('permission:task-create',['only'=>'create']);
-        $this->middleware('permission:task-show',['only'=>'show']);
-        $this->middleware('permission:task-update',['only'=>'update']);
-        $this->middleware('permission:task-delete',['only'=>'destroy']);
-        $this->middleware('permission:task-assign',['only'=>'assignTask']);
-        $this->middleware('permission:task-enable',['only'=>'enabledList']);
-        $this->middleware('permission:task-disable',['only'=>'disableddList']);
-        $this->middleware('permission:task-restore',['only'=>'restoreTask']);
-        $this->middleware('permission:task-complete',['only'=>'complete']);
+        $this->middleware('role:admin|staff',['only'=>'show','complete']);
+        $this->middleware('role:admin',[
+            'only'=>[
+                'index','create','store',
+                'show','edit','update',
+                'destroy','enabledList','disabledList',
+                'assignedList','unassignedList','completeAndNotVerifiedList',
+                'incompletedList','assignTask','assignForm',
+                'restoreTask'
+            ]
+        ]);
     }
 
     /**
