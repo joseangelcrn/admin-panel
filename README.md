@@ -55,3 +55,8 @@ MAIL_FROM_ADDRESS=tu_email
 MAIL_FROM_NAME="${APP_NAME}"
 ````
 
+## Ejecutar los tests existentes
+
+````
+    php artisan test
+````
