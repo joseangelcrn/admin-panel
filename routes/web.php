@@ -76,7 +76,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     //Task Routes...
-    Route::prefix('task')->name('task.')->group(function () {
+    Route::prefix('task')->name('task.')->middleware(['role:admin'])->group(function () {
         Route::get('/list-enabled',[TaskController::class,'enabledList'])->name('list-enabled');
         Route::get('/list-disabled',[TaskController::class,'disabledList'])->name('list-disabled');
         Route::get('/list-assigned',[TaskController::class,'assignedList'])->name('list-assigned');
@@ -89,7 +89,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('/restore/{id}',[TaskController::class,'restoreTask'])->name('restore');
         Route::post('/complete/{taskId}/{userId}',[TaskController::class,'complete'])->name('complete');
     });
-    Route::resource('/task', TaskController::class)->name('*','task');
+    Route::resource('/task', TaskController::class)->middleware(['role:admin'])->name('*','task');
 
 
 });
