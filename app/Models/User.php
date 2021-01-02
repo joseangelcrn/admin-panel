@@ -139,21 +139,21 @@ class User extends Authenticatable implements MustVerifyEmail
         $array['desc'] = 'Todos los usuarios del sistema';
         $array['n'] = $user_total;
         $array['class'] = 'primary';
-        $array['route_name'] = 'task.index';
+        $array['route_name'] = 'admin.show-all-users';
         array_push($info,$array);
 
         $array['title'] = 'Usuarios verificados';
         $array['desc'] = 'Todos los usuarios que han verificado por email su cuenta';
         $array['n'] = $user_verified;
         $array['class'] = 'success';
-        $array['route_name'] = 'task.index';
+        $array['route_name'] = 'admin.show-verified-users';
         array_push($info,$array);
 
         $array['title'] = 'Usuarios sin verificar';
         $array['desc'] = 'Todos los usuarios que no han verificado aun su cuenta por email';
         $array['n'] = $user_not_verified;
         $array['class'] = 'danger';
-        $array['route_name'] = 'task.index';
+        $array['route_name'] = 'admin.show-unverified-users';
         array_push($info,$array);
 
 
@@ -161,7 +161,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $array['desc'] = 'Todos los usuarios del sistema';
         $array['n'] = $user_with_tasks;
         $array['class'] = 'success';
-        $array['route_name'] = 'task.index';
+        $array['route_name'] = 'admin.show-users-with-tasks';
         array_push($info,$array);
 
 
@@ -169,7 +169,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $array['desc'] = 'Todos los usuarios del sistema';
         $array['n'] = $user_without_tasks;
         $array['class'] = 'danger';
-        $array['route_name'] = 'task.index';
+        $array['route_name'] = 'admin.show-users-without-tasks';
         array_push($info,$array);
 
 
