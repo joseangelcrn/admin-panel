@@ -12,9 +12,7 @@ class SecurityController extends Controller
 
 
     public function __construct() {
-        $this->middleware('permission:security-index',['only'=>'index']);
-        $this->middleware('permission:security-show-all-users-and-roles',['only'=>'showTableUsersAndRoles']);
-        $this->middleware('permission:security-update-all-roles',['only'=>'updateAllRoles']);
+
     }
     /**
      * Display a listing of the resource.
