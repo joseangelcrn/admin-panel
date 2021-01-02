@@ -11,6 +11,7 @@ class checkStaffAccessStaffRoutesTest extends TestCase
 {
     use DatabaseTransactions;
 
+    //GETs methods
 
     public function testStaffCanAccessToStaffIndex()
     {

@@ -14,6 +14,7 @@ class staffCanNotAccessToAdminRoutesTest extends TestCase
 {
     use DatabaseTransactions;
 
+    //GETs methods
 
     public function testStaffCanNotAccessToAdminIndex()
     {
