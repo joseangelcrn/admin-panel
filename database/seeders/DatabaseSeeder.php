@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
 
             //Creation of roles and permissions
             RoleSeeder::class,
-            PermissionSeeder::class,
+            // PermissionSeeder::class,
 
             //Assign  Role permissions
             AdminPermissions::class,
