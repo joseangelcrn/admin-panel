@@ -7,10 +7,11 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
-class checkStaffAccessStaffRoutesTest extends TestCase
+class staffCanAccessToStaffRoutesTest extends TestCase
 {
     use DatabaseTransactions;
 
+    //GETs methods
 
     public function testStaffCanAccessToStaffIndex()
     {
@@ -49,5 +50,8 @@ class checkStaffAccessStaffRoutesTest extends TestCase
         $response->assertStatus(200);
 
     }
+
+    //POSTs mehotds
+
 
 }

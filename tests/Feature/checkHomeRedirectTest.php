@@ -11,11 +11,10 @@ use Tests\TestCase;
 class checkHomeRedirectTest extends TestCase
 {
     use DatabaseTransactions;
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
+
+
+    //GETs methods
+
     public function testAdminMustRedirectToAdminIndexRoute()
     {
         $user = User::factory()->create();
