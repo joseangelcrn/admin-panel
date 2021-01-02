@@ -88,4 +88,19 @@ class staffCanNotAccessToAdminRoutesTest extends TestCase
 
     }
 
+    public function testStaffCanNotAccessToAdminShowUserById()
+    {
+        $user = User::factory()->create();
+        $user->assignRole('staff');
+
+        $userToShow = User::factory()->create();
+        $userToShow->assignRole('staff');
+
+        Auth::login($user);
+
+        $response = $this->get(route('admin.show-user',$userToShow->id));
+        $response->assertRedirect(route('forbidden'));
+
+    }
+
 }
