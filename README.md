@@ -33,3 +33,23 @@ MAIL_ENCRYPTION=null
 MAIL_FROM_ADDRESS=tu_email
 MAIL_FROM_NAME="${APP_NAME}"
 ````
+
+## Ejecutar las migraciones y seeders
+
+### Ejecutar migraciones
+
+````
+    php artisan migrate
+````
+
+### Ejecutar seeders
+
+````
+    php artisan db:seed
+````
+
+### Reiniciar migraciones y seeders
+
+````
+    php artisan migrate:refresh --seed
+````
