@@ -28,7 +28,10 @@
             </p>
             <hr>
             <h3>Usuarios asignados a esta tarea</h3>
-            @include('partials.datatable.admin.user',['users'=>$task->users])
+            @include('partials.datatable.user',[
+                'users'=>$task->users,
+                'options'=>Auth::user()->getOptionsForDataTable()
+            ])
           </div>
         </div>
     </div>
