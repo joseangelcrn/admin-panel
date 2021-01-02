@@ -13,8 +13,6 @@ class AdminController extends Controller
 
     public function __construct()
     {
-        $this->middleware('permission:admin-index',['only'=>'index']);
-        $this->middleware('permission:admin-showUser',['only'=>'showUser']);
     }
 
     /**

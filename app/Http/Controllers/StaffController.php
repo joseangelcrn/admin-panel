@@ -10,7 +10,6 @@ class StaffController extends Controller
 
     public function __construct()
     {
-        $this->middleware('permission:staff-index',['only'=>'index']);
     }
 
     /**
