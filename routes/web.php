@@ -35,7 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [HomeController::class,'home'])->name('home');
 
     //Admin Routes..
-    Route::prefix('admin')->name('admin.')->group(function () {
+    Route::prefix('admin')->name('admin.')->middleware(['role:admin'])->group(function () {
         Route::get('/',[AdminController::class,'index'])->name('index');
 
         //show
@@ -69,7 +69,7 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     //Staff Routes...
-    Route::prefix('staff')->name('staff.')->group(function () {
+    Route::prefix('staff')->name('staff.')->middleware(['role:staff'])->group(function () {
         Route::get('/tasks-in-progress', [StaffController::class,'showInProgress'])->name('tasks-in-progress');
         Route::get('/tasks-completed', [StaffController::class,'completedTasks'])->name('tasks-completed');
         Route::get('/',[StaffController::class,'index'])->name('index');
@@ -91,10 +91,6 @@ Route::group(['middleware' => ['auth']], function () {
     });
     Route::resource('/task', TaskController::class)->name('*','task');
 
-
-});
-
-Route::get('/test', function () {
 
 });
 
