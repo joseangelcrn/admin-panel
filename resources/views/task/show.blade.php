@@ -46,8 +46,7 @@
     <script>
             // Call the dataTables jQuery plugin
             $(document).ready(function() {
-                $('#dataTable-staff-user').DataTable();
-                $('#dataTable-tasks').DataTable();
+                $('#dataTable-user').DataTable();
             });
     </script>
 
