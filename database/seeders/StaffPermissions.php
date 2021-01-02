@@ -19,13 +19,13 @@ class StaffPermissions extends Seeder
         $staffRole = Role::findByName('staff');
 
 
-        foreach (PermissionSeeder::$permissions as $type=>$permissionsByType) {
-            if ($type === 'staff' or $type === 'common') {
-                foreach ($permissionsByType as $permission) {
-                    $staffRole->givePermissionTo($permission);
-                }
-            }
-        }
+        // foreach (PermissionSeeder::$permissions as $type=>$permissionsByType) {
+        //     if ($type === 'staff' or $type === 'common') {
+        //         foreach ($permissionsByType as $permission) {
+        //             $staffRole->givePermissionTo($permission);
+        //         }
+        //     }
+        // }
 
         // $staffRole->syncPermissions(PermissionSeeder::$permissions['staff']);
         // $staffRole->syncPermissions(PermissionSeeder::$permissions['common']);
