@@ -5,6 +5,27 @@ Panel de administración para la gestion y administracion de usuarios y tareas.
     <img src="https://i.gyazo.com/fffc1bb053e21aff8fc51517e94243ca.png" alt="Image from Gyazo" width="700"/>
 </p>
 
+## Ejecutar las migraciones y seeders
+
+### Ejecutar migraciones
+
+````
+    php artisan migrate
+````
+
+### Ejecutar seeders
+
+````
+    php artisan db:seed
+````
+
+### Reiniciar migraciones y seeders
+
+````
+    php artisan migrate:refresh --seed
+````
+
+
 ## Activar verificacion por email al crear usuarios: 
 
 En web.php: 
@@ -34,22 +55,3 @@ MAIL_FROM_ADDRESS=tu_email
 MAIL_FROM_NAME="${APP_NAME}"
 ````
 
-## Ejecutar las migraciones y seeders
-
-### Ejecutar migraciones
-
-````
-    php artisan migrate
-````
-
-### Ejecutar seeders
-
-````
-    php artisan db:seed
-````
-
-### Reiniciar migraciones y seeders
-
-````
-    php artisan migrate:refresh --seed
-````
