@@ -3,14 +3,21 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
 class staffCanAccessToStaffRoutesTest extends TestCase
 {
-    use DatabaseTransactions,WithoutMiddleware;
+    use DatabaseTransactions;
+
+    protected function setUp():void
+    {
+        parent::setUp();
+        $this->withoutMiddleware('verify');
+
+    }
 
     //GETs methods
 

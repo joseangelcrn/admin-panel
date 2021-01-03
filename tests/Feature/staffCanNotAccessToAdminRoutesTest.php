@@ -13,7 +13,14 @@ use Tests\TestCase;
 
 class staffCanNotAccessToAdminRoutesTest extends TestCase
 {
-    use DatabaseTransactions,WithoutMiddleware;
+    use DatabaseTransactions;
+
+    protected function setUp():void
+    {
+        parent::setUp();
+        $this->withoutMiddleware('verify');
+
+    }
 
 
     //GETs methods

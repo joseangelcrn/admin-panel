@@ -11,8 +11,14 @@ use Tests\TestCase;
 
 class checkHomeRedirectTest extends TestCase
 {
-    use DatabaseTransactions,WithoutMiddleware;
+    use DatabaseTransactions;
 
+    protected function setUp():void
+    {
+        parent::setUp();
+        $this->withoutMiddleware('verify');
+
+    }
 
     //GETs methods
 

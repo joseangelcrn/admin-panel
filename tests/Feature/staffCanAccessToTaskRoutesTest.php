@@ -13,8 +13,14 @@ use Tests\TestCase;
 
 class staffCanAccessToTaskRoutesTest extends TestCase
 {
+    use DatabaseTransactions;
 
-    use DatabaseTransactions,WithoutMiddleware;
+    protected function setUp():void
+    {
+        parent::setUp();
+        $this->withoutMiddleware('verify');
+
+    }
 
     /**
      * A basic feature test example.
