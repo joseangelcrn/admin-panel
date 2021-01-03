@@ -50,4 +50,21 @@ class staffCanAccessToTaskRoutesTest extends TestCase
 
         $response->assertRedirect(route('staff.index'));
     }
+
+    public function testStaffCanNotAccessToCompleteUnassignedTasks()
+    {
+
+        $user = User::factory()->create();
+        $user->assignRole('staff');
+
+
+        $task = Task::factory()->create();
+
+        Auth::login($user);
+
+        $response = $this->from(route('staff.index'))->post(route('task.complete',[$task->id,$user->id]));
+
+        $response->assertRedirect(route('staff.index'))->assertSessionHas('error');
+    }
+
 }
