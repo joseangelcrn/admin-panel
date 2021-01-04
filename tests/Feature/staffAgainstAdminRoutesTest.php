@@ -125,4 +125,24 @@ class staffCanNotAccessToAdminRoutesTest extends TestCase
     }
 
 
+    //POSTs methods
+
+
+    public function testStaffCanNotAccessToAdminUpdateUser()
+    {
+        $user = User::factory()->create();
+        $user->assignRole('staff');
+
+        $userToUpdate = User::factory()->create();
+        $userToUpdate->assignRole('staff');
+
+        $userToUpdate->user_name .= ' edited';
+
+
+        Auth::login($user);
+
+        $response = $this->post(route('admin.update-user',$userToUpdate->id));
+        $response->assertRedirect(route('forbidden'));
+
+    }
 }
