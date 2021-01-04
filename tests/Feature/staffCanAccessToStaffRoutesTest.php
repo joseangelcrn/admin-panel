@@ -59,7 +59,5 @@ class staffCanAccessToStaffRoutesTest extends TestCase
 
     }
 
-    //POSTs mehotds
-
 
 }
