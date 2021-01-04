@@ -4,11 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\ErrorHandler\Debug;
 use Tests\TestCase;
 
 class staffCanNotAccessToAdminRoutesTest extends TestCase
@@ -112,5 +108,21 @@ class staffCanNotAccessToAdminRoutesTest extends TestCase
         $response->assertRedirect(route('forbidden'));
 
     }
+
+    public function testStaffCanNotAccessToAdminEditUser()
+    {
+        $user = User::factory()->create();
+        $user->assignRole('staff');
+
+        $userToEdit = User::factory()->create();
+        $userToEdit->assignRole('staff');
+
+        Auth::login($user);
+
+        $response = $this->get(route('admin.edit-user',$userToEdit->id));
+        $response->assertRedirect(route('forbidden'));
+
+    }
+
 
 }
