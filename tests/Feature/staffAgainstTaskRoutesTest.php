@@ -194,4 +194,36 @@ class staffCanAccessToTaskRoutesTest extends TestCase
         $response->assertRedirect(route('staff.index'))->assertSessionHas('error');
     }
 
+    public function testStaffCanNotAccessToAssignTasks()
+    {
+
+        $user = User::factory()->create();
+        $user->assignRole('staff');
+
+
+        $task = Task::factory()->create();
+
+        Auth::login($user);
+
+        $response = $this->post(route('task.assign',[$task->id,$user->id]));
+
+        $response->assertRedirect(route('forbidden'));
+    }
+
+    public function testStaffCanNotAccessToRestoreTasks()
+    {
+
+        $user = User::factory()->create();
+        $user->assignRole('staff');
+
+
+        $task = Task::factory()->create();
+
+        Auth::login($user);
+
+        $response = $this->post(route('task.restore',$task->id));
+
+        $response->assertRedirect(route('forbidden'));
+    }
+
 }
