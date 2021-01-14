@@ -60,3 +60,23 @@ MAIL_FROM_NAME="${APP_NAME}"
 ````
     php artisan test
 ````
+
+## Estados de las tareas
+
+````
++ Total: Todas las tareas existentes.
+
++ Activas: Tareas con el campo active = true.
+
++ Inactivas: Tareas con el campo active = false.
+
++ Asignadas: Tareas con al menos un usuario asignado.
+
++ No asignadas: Tareas sin usuarios asignados.
+
++ Completas (no verificadas):  Tareas las cuales todos los usuarios han finalizado su parte de la tarea, pero aun no ha sido verificado por un usuario admin.
+
++ Incompletas: Tareas las cuales, al menos usuario asignado a la misma, no ha terminado su parte del trabajo.
+
++ Verificadas: Tareas las cuales las tareas han sido completadas y verificadas por un usuario administrador.
+````
