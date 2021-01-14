@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Symfony\Component\Console\Input\Input;
 
 class TaskController extends Controller
 {
@@ -202,6 +201,11 @@ class TaskController extends Controller
         return view('task.list-completed-unverified',compact('tasks'));
     }
 
+    public function completedAndVerifiedList()
+    {
+        $tasks = Task::getVerified();
+        return view('task.list-completed-verified',compact('tasks'));
+    }
 
     public function incompletedList()
     {
@@ -254,5 +258,22 @@ class TaskController extends Controller
         else{
             return back()->with('error','Ha ocurrido algun error al completar la tarea');
         }
+    }
+
+    public function verify($id,Request $request)
+    {
+
+        $task = Task::findOrFail($id);
+        $userId = Auth::user()->id;
+
+        $verified = $task->verify($userId);
+
+        if ($verified) {
+            return back()->with('success','Se ha verificado correctamente la tarea.');
+        }
+        else {
+            return back()->with('error','Ha ocurrido un error al verificar la tarea.');
+        }
+
     }
 }
