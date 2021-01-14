@@ -78,5 +78,5 @@ MAIL_FROM_NAME="${APP_NAME}"
 
 + Incompletas: Tareas las cuales, al menos usuario asignado a la misma, no ha terminado su parte del trabajo.
 
-+ Verificadas: Tareas las cuales las tareas han sido completadas y verificadas por un usuario administrador.
++ Verificadas: Tareas las cuales  han sido completadas y verificadas por un usuario administrador.
 ````
