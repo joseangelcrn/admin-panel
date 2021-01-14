@@ -241,7 +241,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     //Datatable options
 
-    public function getOptionsForDataTable($canCompleteTasks = false)
+    public function getOptionsForDataTable($canCompleteTasks = false, $canVerifyTasks = false)
     {
         $options = [];
         if ($this->isAdmin()) {
@@ -253,6 +253,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
         if ($canCompleteTasks) {
             array_push($options,'complete');
+        }
+
+        if ($canVerifyTasks) {
+            array_push($options,'verify');
         }
 
         return $options;
