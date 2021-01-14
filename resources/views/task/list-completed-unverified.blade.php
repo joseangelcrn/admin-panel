@@ -13,10 +13,9 @@
     <div class="container card shadow p-5">
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                {{-- @include('partials.datatable.admin.task',['tasks'=>$tasks]) --}}
                 @include('partials.datatable.task',[
                     'tasks'=>$tasks,
-                    'options'=>Auth::user()->getOptionsForDataTable(),
+                    'options'=>Auth::user()->getOptionsForDataTable(false,true),
                 ])
             </div>
         </div>
