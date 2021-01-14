@@ -8,7 +8,7 @@
                         {{$title}}
                     </div>
                     <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $n }}</div>
-                    @if($n_pc != null)
+                    @if($n_pc != null or $n_pc > -1)
                         @include('partials.components.progress-bar',[
                             'value'=>$n_pc,
                             'class'=>$class

@@ -20,7 +20,9 @@ class Task extends Model
     protected $fillable=[
         'title',
         'description',
-        'active'
+        'active',
+        'verified_by_user',
+        'verified_at'
     ];
 
     /**
@@ -81,12 +83,18 @@ class Task extends Model
         $tasks = self::getAssignedAndActive();
 
         foreach ($tasks as $task) {
-            if (!$task->hasIncompleteWorks()) {
+            if (!$task->hasIncompleteWorks() and $task->verified_at == null and $task->verified_by_user == null) {
                 $completedTasks->push($task);
             }
         }
 
         return $completedTasks;
+      }
+
+      public static function getVerified()
+      {
+        $verifiedTasks = Task::whereNotNull('verified_by_user')->whereNotNull('verified_at')->get();
+        return $verifiedTasks;
       }
 
       public static function getNotAttachedTaskToUser($userId)
@@ -111,13 +119,16 @@ class Task extends Model
         $task_disabled = self::where('active',false)->get()->count();
         $task_completed = self::getCompletedAndActive()->count();
         $task_incompleted = self::getIncompleteAndActive()->count();
-
+        $task_verified = self::getVerified()->count();
 
         //n_pc = percentage
         $task_assigned_pc = number_format($task_assigned/($task_assigned+$task_not_assigned),2)  * 100;
         $task_not_assigned_pc = number_format($task_not_assigned/($task_assigned+$task_not_assigned),2) * 100;
         $task_enabled_pc = number_format($task_enabled/$task_total,2)  * 100;
         $task_disabled_pc = number_format($task_disabled/$task_total,2)  * 100;
+        $task_verified_pc = number_format($task_verified/$task_total,2) * 100;
+
+
 
         if ($task_assigned != 0) {
             $task_completed_pc = number_format($task_completed/$task_assigned,2) * 100;
@@ -191,6 +202,15 @@ class Task extends Model
         $array['route_name'] = 'task.list-incompleted';
         array_push($info,$array);
 
+        $array['title'] = 'Tareas verificadas';
+        $array['desc'] = 'Tareas en las que un usuario administrador ha comprobado que la tarea se ha terminado correctamente';
+        $array['n'] = $task_verified;
+        $array['n_pc'] = $task_verified_pc;
+        // dd($array['n_pc']);
+        $array['class'] = 'primary';
+        $array['route_name'] = 'task.list-completed-verified';
+        array_push($info,$array);
+
 
         return $info;
       }
@@ -235,4 +255,12 @@ class Task extends Model
       {
         return $this->update(['active'=>false]);
       }
+
+    public function verify($userId)
+    {
+        return $this->update([
+            'verified_by_user' => $userId,
+            'verified_at'=> Carbon::now()
+        ]);
+    }
 }

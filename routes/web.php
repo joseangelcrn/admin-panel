@@ -85,12 +85,14 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/list-assigned',[TaskController::class,'assignedList'])->name('list-assigned');
             Route::get('/list-unassigned',[TaskController::class,'unassignedList'])->name('list-unassigned');
             Route::get('/list-completed-unverified',[TaskController::class,'completedAndNotVerifiedList'])->name('list-completed-unverified');
+            Route::get('/list-completed-verified',[TaskController::class,'completedAndVerifiedList'])->name('list-completed-verified');
             Route::get('/list-incompleted',[TaskController::class,'incompletedList'])->name('list-incompleted');
 
             Route::get('/assign-form/{userId}',[TaskController::class,'assignForm'])->name('assign-form');
             Route::post('/assign',[TaskController::class,'assignTask'])->name('assign');
 
             Route::post('/restore/{id}',[TaskController::class,'restoreTask'])->name('restore');
+            Route::post('/verify/{id}', [TaskController::class,'verify'])->name('verify');
         });
 
         Route::group(['middleware' => ['role:admin|staff']], function () {

@@ -40,6 +40,7 @@
             <a class="collapse-item" href="{{route('task.list-assigned')}}">Asignadas</a>
             <a class="collapse-item" href="{{route('task.list-unassigned')}}">No asignadas</a>
             <a class="collapse-item" href="{{route('task.list-completed-unverified')}}">Completas (no verificadas)</a>
+            <a class="collapse-item" href="{{route('task.list-completed-verified')}}">Completas (verificadas)</a>
             <a class="collapse-item" href="{{route('task.list-incompleted')}}">Incompletas</a>
             <hr>
             <a class="collapse-item" href="{{route('task.create')}}">Crear tarea</a>

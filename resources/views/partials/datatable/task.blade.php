@@ -63,6 +63,15 @@
                                 </button>
                             </form>
                         @endif
+                        @if(in_array('verify',$options))
+                            <form
+                                action="{{route('task.verify',$task->id)}}"
+                                method="post" style="display:inline-block;">
+                                    @csrf
+                                    @method('POST')
+                                    <button class="btn btn-sm btn-success" title="Verificar"><i class="far fa-check-circle"></i></button>
+                            </form>
+                        @endisset
                         @if(in_array('delete_restore',$options))
                             <form
                                 @if ($task->active)

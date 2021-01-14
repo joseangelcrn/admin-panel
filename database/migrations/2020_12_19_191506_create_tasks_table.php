@@ -17,6 +17,8 @@ class CreateTasksTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
+            $table->unsignedBigInteger('verified_by_user')->nullable()->default(null);
+            $table->timestamp('verified_at')->nullable()->default(null);
             $table->boolean('active')->default(true);
             $table->timestamps();
         });
